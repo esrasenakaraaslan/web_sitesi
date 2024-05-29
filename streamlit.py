@@ -5,8 +5,12 @@ def main():
     st.markdown(
         """
         <style>
+        body {
+            background-color: #FF007F;
+            color: white;
+        }
         .fuşya {
-            background-color: #864BD8;
+            background-color: #FF007F;
             color: white;
             padding: 10px 20px;
             font-size: 18px;
@@ -19,13 +23,13 @@ def main():
 
     st.title("FreshData İş İlanı Sitesi")
 
-    if st.button("İş Bul", key="iş_bul_button"):
+    if st.button("İş Bul", key="iş_bul_button", class="fuşya"):
         st.write("Burada iş bulma işlevi gelecek.")
 
-    if st.button("Meslek Grupları", key="meslek_grupları_button"):
+    if st.button("Meslek Grupları", key="meslek_grupları_button", class="fuşya"):
         st.write("Burada meslek gruplarına göre iş arama işlevi gelecek.")
 
-    if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
+    if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button", class="fuşya"):
         st.write("Burada Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
 
 if __name__ == "__main__":
