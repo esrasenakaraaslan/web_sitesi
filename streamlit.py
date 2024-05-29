@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 
-# Veri
-data = pd.read_excel("https://github.com/esrasenakaraaslan/datasetim/blob/eb3d65ae50084c3b2fba72789b3b92d7cd881d2f/t%C3%BCm_veriler_doldurulmus.xlsx")  # İş ilanlarını içeren CSV dosyasını okuyun
-
 # Uygulama başlığı ve alt başlık
 st.title("FreshData İş İlanı Sitesi")
 st.markdown("""
