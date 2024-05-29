@@ -1,4 +1,7 @@
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -82,9 +85,28 @@ if st.button("İşveren Girişi", key="isveren_girisi_button"):
 # Görsel ekleme
 st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True)
 
+# Analizimiz butonu ve grafikleri
+if st.button("Analizimiz", key="analiz_button"):
+    st.markdown('<div class="info-box"><p>Veri analizi ve grafikler burada gösterilecek.</p></div>', unsafe_allow_html=True)
+    
+    # Veri setini yükleme
+    data_url = 'https://github.com/esrasenakaraaslan/datasetim/raw/main/t%C3%BCm_veriler_doldurulmus.xlsx'
+    df = pd.read_excel(data_url)
+    
+    # Grafik 1: Cinsiyete göre dağılım
+    st.subheader("Konuma Göre Dağılım")
+    fig1, ax1 = plt.subplots()
+    sns.countplot(data=df, x='Konum', ax=ax1)
+    st.pyplot(fig1)
+
+    # Grafik 2: Pozisyon dağılımı
+    st.subheader("Yaş Dağılımı")
+    fig2, ax2 = plt.subplots()
+    sns.histplot(data=df, x='Pozisyon', kde=True, ax=ax2)
+    st.pyplot(fig2)
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
 
 # Main fonksiyonu tanımla ve çağır
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
