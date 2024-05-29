@@ -1,4 +1,4 @@
-mport streamlit as st
+import streamlit as st
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
