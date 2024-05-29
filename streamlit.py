@@ -55,36 +55,36 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-def main():
-    # Başlık
-    st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
+# Başlık
+st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-    # Üçlü kolonlar ve butonlar
-    col1, col2, col3 = st.columns(3)
+# Üçlü kolonlar ve butonlar
+col1, col2, col3 = st.columns(3)
 
-    with col1:
-        if st.button("İş Bul", key="iş_bul_button"):
-            st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
+with col1:
+    if st.button("İş Bul", key="iş_bul_button"):
+        st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-    with col2:
-        if st.button("Meslek Grupları", key="meslek_grupları_button"):
-            st.markdown('<div class="info-box"><p>Burada meslek gruplarına göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
+with col2:
+    if st.button("Meslek Grupları", key="meslek_grupları_button"):
+        st.markdown('<div class="info-box"><p>Burada meslek gruplarına göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-    with col3:
-        if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
-            st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
+with col3:
+    if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
+        st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
 
-    # Ek bir buton ve bilgi kutusu
-    st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
+# Ek bir buton ve bilgi kutusu
+st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
-    if st.button("İşveren Girişi", key="isveren_girisi_button"):
-        st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
+if st.button("İşveren Girişi", key="isveren_girisi_button"):
+    st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-    # Görsel ekleme
-    st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True)
+# Görsel ekleme
+st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True)
 
-    # Footer
-    st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+# Footer
+st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
 
-if _name_ == "_main_":
+# Main fonksiyonu tanımla ve çağır
+if __name__ == "__main__":
     main()
