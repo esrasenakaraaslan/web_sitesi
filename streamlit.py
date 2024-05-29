@@ -78,40 +78,29 @@ st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html
 
 if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
-# Ek bir buton ve bilgi kutusu
-st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
-with col3:
-    if st.button("Hakkımızda", key="hakkimizda_button"):
-        st.markdown('''
-            ## Bilişim Sektöründe Gelecek: Veri Analizi ve İş İlanları
+# Hakkımızda butonu
+if st.button("Hakkımızda", key="hakkimizda_button"):
+    st.markdown('''
+        ## Bilişim Sektöründe Gelecek: Veri Analizi ve İş İlanları
 
-            ### Teknolojinin hızla gelişmesiyle birlikte, bilişim sektörü her geçen gün daha da önemli hale gelmektedir. Bu sektördeki değişim ve gelişim, hem iş arayanlar hem de işverenler için büyük fırsatlar ve zorluklar sunmaktadır. Veri analizi, bu alanda önemli bir rol oynamakta ve gelecekteki eğilimleri belirlemede kritik bir araç haline gelmektedir.
+        ### Teknolojinin hızla gelişmesiyle birlikte, bilişim sektörü her geçen gün daha da önemli hale gelmektedir. Bu sektördeki değişim ve gelişim, hem iş arayanlar hem de işverenler için büyük fırsatlar ve zorluklar sunmaktadır. Veri analizi, bu alanda önemli bir rol oynamakta ve gelecekteki eğilimleri belirlemede kritik bir araç haline gelmektedir.
 
-            #### Bilişimde Kariyer Yolculuğu
+        #### Bilişimde Kariyer Yolculuğu
 
-            Bilişim sektörü, hızla değişen ve gelişen bir alandır. Bu sektörde kariyer yapmak isteyenler için, doğru işi bulmak ve kendilerini sürekli olarak güncellemek önemlidir. Ancak, bilişim sektöründeki iş ilanlarını izlemek ve değerlendirmek karmaşık bir süreç olabilir.
+        Bilişim sektörü, hızla değişen ve gelişen bir alandır. Bu sektörde kariyer yapmak isteyenler için, doğru işi bulmak ve kendilerini sürekli olarak güncellemek önemlidir. Ancak, bilişim sektöründeki iş ilanlarını izlemek ve değerlendirmek karmaşık bir süreç olabilir.
 
-            #### Veri Analiziyle Geleceği Anlamak
+        #### Veri Analiziyle Geleceği Anlamak
 
-            Veri analizi, bilişim sektöründeki iş ilanlarını ve eğilimlerini anlamak için güçlü bir araçtır. İş ilanlarındaki trendleri analiz ederek, hangi beceri setlerinin ön plana çıktığını ve hangi alanlarda daha fazla talep olduğunu belirlemek mümkündür. Bu sayede, iş arayanlar kendilerini daha iyi yönlendirebilir ve işverenler doğru adayları bulabilir.
+        Veri analizi, bilişim sektöründeki iş ilanlarını ve eğilimlerini anlamak için güçlü bir araçtır. İş ilanlarındaki trendleri analiz ederek, hangi beceri setlerinin ön plana çıktığını ve hangi alanlarda daha fazla talep olduğunu belirlemek mümkündür. Bu sayede, iş arayanlar kendilerini daha iyi yönlendirebilir ve işverenler doğru adayları bulabilir.
 
-            #### Yenilikçi Bir Platform: FreshData
+        #### Yenilikçi Bir Platform: FreshData
 
-            FreshData, bilişim sektöründeki iş arayanlar için yenilikçi bir platformdur. Bu platform, iş ilanlarını derinlemesine analiz ederek kullanıcılarına en güncel bilgileri sunar. Aynı zamanda, bilişim sektörünün geleceğine dair öngörülerde bulunur ve kullanıcılarına bu konuda rehberlik eder.
+        FreshData, bilişim sektöründeki iş arayanlar için yenilikçi bir platformdur. Bu platform, iş ilanlarını derinlemesine analiz ederek kullanıcılarına en güncel bilgileri sunar. Aynı zamanda, bilişim sektörünün geleceğine dair öngörülerde bulunur ve kullanıcılarına bu konuda rehberlik eder.
 
-            #### Kullanıcı Dostu Arayüz
+        #### Kullanıcı Dostu Arayüz
 
-            FreshData'nın kullanıcı dostu arayüzü, iş arayanların ve işverenlerin ihtiyaçlarına yönelik tasarlanmıştır. Kullanıcılar, kolayca istedikleri pozisyonları arayabilir, iş ilanlarını filtreleyebilir ve ilgilerini çeken içeriklere erişebilirler. Ayrıca, platformun görsel ve içerikleri kullanıcıların ilgisini çekmek için özenle seçilmiştir.
-
-            #### Geleceğe Yönelik Bakış
-
-            FreshData, bilişim sektörünün geleceğine yönelik bir bakış sunar. Veri analizi ve uzman görüşlerine dayanarak, sektördeki değişimleri ve gelecekteki trendleri tahmin etmeye çalışır. Bu sayede, hem iş arayanlar hem de işverenler geleceğe daha güvenle bakabilirler.
-
-            ### Sonuç
-
-            Bilişim sektörü, sürekli değişen ve gelişen bir alan olmaya devam edecektir. FreshData gibi platformlar, bu değişime ayak uydurmak isteyenler için değerli bir kaynak oluşturur. Veri analizi ve yenilikçi yaklaşımlarıyla, bilişim sektörünün geleceğini şekillendirmeye yardımcı olurlar.
-        ''')
+        FreshData'nın kullanıcı dostu arayüzü, iş arayanların ve işverenlerin ihtiyaçlarına yönelik tasarlanmıştır. Kullanıcılar, kolayca istedikleri pozisyonları arayabilir, iş ilanlarını filtreleyebilir ve ilgilerini çeken içeriklere erişebilirler
 
 
 # Görsel ekleme
