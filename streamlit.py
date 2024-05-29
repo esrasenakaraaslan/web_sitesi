@@ -1,14 +1,32 @@
 import streamlit as st
-import pandas as pd
 
-# Arka plan rengini ve yazı stilini belirleyen stil
-page_bg_img = '''
-<style>
-body {
-background-color: #FF00FF;
-color: white;
-}
-</style>
-'''
+def main():
+    st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
+    st.markdown(
+        """
+        <style>
+        .fuşya {
+            background-color: #FF007F;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-st.markdown(page_bg_img, unsafe_allow_html=True)
+    st.title("FreshData İş İlanı Sitesi")
+
+    if st.button("İş Bul", key="iş_bul_button"):
+        st.write("Burada iş bulma işlevi gelecek.")
+
+    if st.button("Meslek Grupları", key="meslek_grupları_button"):
+        st.write("Burada meslek gruplarına göre iş arama işlevi gelecek.")
+
+    if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
+        st.write("Burada Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
+
+if __name__ == "__main__":
+    main()
