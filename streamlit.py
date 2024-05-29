@@ -1,88 +1,77 @@
 import streamlit as st
 
-# Kullanıcılar ve iş ilanları için veri saklama
-users = {"john": "password123", "emma": "abc123"}
-jobs = [
-    {"title": "Data Scientist", "company": "TechCorp", "location": "Remote", "salary": "$100,000"},
-    {"title": "Software Engineer", "company": "SoftTech", "location": "New York", "salary": "$120,000"},
-    {"title": "Product Manager", "company": "BigCo", "location": "San Francisco", "salary": "$150,000"},
-]
+# Uygulama başlığı ve alt başlık
+st.title("FreshData İş İlanı Sitesi")
+st.markdown("""
+    ### Hoş Geldiniz!
+    Bu web sitesi aracılığıyla iş arama ve bilgi edinme işlevlerini kullanabilirsiniz.
+""")
 
-# Ana sayfa
-def home_page():
-    st.title("FreshData İş İlanı Sitesi")
-    st.markdown("""
-        ### Hoş Geldiniz!
-        Bu web sitesi aracılığıyla iş arayabilir ve ilan verebilirsiniz.
+# Arka plan rengi ve resmi
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f0f2f6;
+    }
+    .stApp {
+        background-image: url("https://via.placeholder.com/1200x400.png?text=FreshData+İş+İlanı+Sitesi");
+        background-size: cover;
+    }
+    .button {
+        background-color: #1f77b4;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #45a049;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Ana menü
+menu = st.radio("Menü", ("İş Bul", "Meslek Grupları", "Türkiye'nin Durumu", "Hakkımızda"))
+
+# İş Bul seçeneği
+if menu == "İş Bul":
+    st.header("İş Bulma İşlevi")
+    if st.button("İş Bul", key="iş_bul_button", class="button"):
+        st.write("Burada iş bulma işlevi gelecek.")
+
+# Meslek Grupları seçeneği
+elif menu == "Meslek Grupları":
+    st.header("Meslek Gruplarına Göre İş Arama")
+    if st.button("Meslek Grupları", key="meslek_grupları_button", class="button"):
+        st.write("Burada meslek gruplarına göre iş arama işlevi gelecek.")
+
+# Türkiye'nin Durumu seçeneği
+elif menu == "Türkiye'nin Durumu":
+    st.header("Türkiye'nin Durumu")
+    if st.button("Türkiye'nin Durumu", key="son_nokta_button", class="button"):
+        st.write("Burada Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
+
+# Hakkımızda seçeneği
+elif menu == "Hakkımızda":
+    st.header("Hakkımızda")
+    st.write("""
+    FreshData, iş arayanlar ve işverenler arasında köprü oluşturan bir platformdur.
+    Misyonumuz, iş arayanlara istedikleri işi bulmaları konusunda destek olmak ve işverenlere kaliteli iş gücü sağlamaktır.
     """)
-    if st.button("Giriş Yap"):
-        login_page()
 
-    if st.button("Kayıt Ol"):
-        register_page()
+# Alt menü
+if st.sidebar.checkbox("Ayarlar"):
+    st.sidebar.subheader("Ayarlar")
+    st.sidebar.checkbox("Karanlık Modu")
+    st.sidebar.selectbox("Dil Seçimi", ["Türkçe", "İngilizce", "Almanca"])
 
-# Giriş sayfası
-def login_page():
-    st.title("Giriş Yap")
-    username = st.text_input("Kullanıcı Adı")
-    password = st.text_input("Şifre", type="password")
-    if st.button("Giriş Yap"):
-        if username in users and users[username] == password:
-            st.success(f"Başarıyla giriş yapıldı: {username}")
-            job_board(username)
-        else:
-            st.error("Geçersiz kullanıcı adı veya şifre!")
-
-# Kayıt sayfası
-def register_page():
-    st.title("Kayıt Ol")
-    new_username = st.text_input("Yeni Kullanıcı Adı")
-    new_password = st.text_input("Yeni Şifre", type="password")
-    if st.button("Kayıt Ol"):
-        if new_username in users:
-            st.error("Bu kullanıcı adı zaten kullanılıyor!")
-        else:
-            users[new_username] = new_password
-            st.success("Kayıt başarıyla tamamlandı! Lütfen giriş yapın.")
-            login_page()
-
-# İş ilanı panosu
-def job_board(username):
-    st.title("İş İlanları")
-    st.markdown("### İş İlanları")
-    for job in jobs:
-        st.write(f"{job['title']}** - {job['company']} - {job['location']} - {job['salary']}")
-        if st.button("Detayları Gör"):
-            job_details(job, username)
-
-# İş ilanı detayları sayfası
-def job_details(job, username):
-    st.title("İş İlanı Detayları")
-    st.write(f"{job['title']}** - {job['company']} - {job['location']} - {job['salary']}")
-    st.markdown("""
-        ### Detaylar
-        Bu alanda iş ilanının detayları yer alacak.
-    """)
-    if st.button("Başvur"):
-        st.success("Başvurunuz alınmıştır!")
-    if st.button("Favorilere Ekle"):
-        st.success("İlan favorilere eklendi!")
-        favorite_jobs(username, job)
-
-# Favori iş ilanları sayfası
-def favorite_jobs(username, job):
-    st.title("Favori İş İlanları")
-    st.write(f"{job['title']} - {job['company']} - {job['location']} - {job['salary']}")
-    st.markdown("""
-        ### Favori İlanlarınız
-        Bu alanda favorilere eklediğiniz iş ilanlarınız listelenecek.
-    """)
-    if st.button("Başvur"):
-        st.success("Başvurunuz alınmıştır!")
-
-# Ana uygulama
-def main():
-    home_page()
-
-if _name_ == "_main_":
-    main()
+# Footer
+st.markdown("""
+---
+© 2024 FreshData. Tüm hakları saklıdır.
+""")
