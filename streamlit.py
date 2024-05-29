@@ -32,7 +32,6 @@ def main():
         .header {
             display: flex;
             align-items: center;
-            justify-content: center;
             margin-top: 20px;
             margin-bottom: 20px;
         }
@@ -44,6 +43,7 @@ def main():
         .header-image {
             width: 50px;
             height: auto;
+            margin-right: 10px;
         }
         .info-box {
             background-color: #ffffff;
@@ -68,7 +68,7 @@ def main():
     )
 
     # Üst kısım (header)
-    st.markdown('<div class="header"><img src="https://via.placeholder.com/50x50.png?text=🍎" class="header-image"><h1 class="header-title">FreshData İş İlanı Sitesi</h1></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Apple-black.svg/512px-Apple-black.svg.png" class="header-image"><h1 class="header-title">FreshData İş İlanı Sitesi</h1></div>', unsafe_allow_html=True)
 
     # Üçlü kolonlar ve butonlar
     col1, col2, col3 = st.columns(3)
