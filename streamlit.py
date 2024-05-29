@@ -18,6 +18,18 @@ st.markdown(
         background-image: url("https://via.placeholder.com/1200x400.png?text=FreshData+İş+İlanı+Sitesi");
         background-size: cover;
     }
+    .button {
+        background-color: #1f77b4;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .button:hover {
+        background-color: #45a049;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -29,17 +41,20 @@ menu = st.radio("Menü", ("İş Bul", "Meslek Grupları", "Türkiye'nin Durumu")
 # İş Bul seçeneği
 if menu == "İş Bul":
     st.header("İş Bulma İşlevi")
-    st.write("Burada iş bulma işlevi gelecek.")
+    if st.button("İş Bul", key="iş_bul_button", class="button"):
+        st.write("Burada iş bulma işlevi gelecek.")
 
 # Meslek Grupları seçeneği
 elif menu == "Meslek Grupları":
     st.header("Meslek Gruplarına Göre İş Arama")
-    st.write("Burada meslek gruplarına göre iş arama işlevi gelecek.")
+    if st.button("Meslek Grupları", key="meslek_grupları_button", class="button"):
+        st.write("Burada meslek gruplarına göre iş arama işlevi gelecek.")
 
 # Türkiye'nin Durumu seçeneği
 elif menu == "Türkiye'nin Durumu":
     st.header("Türkiye'nin Durumu")
-    st.write("Burada Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
+    if st.button("Türkiye'nin Durumu", key="son_nokta_button", class="button"):
+        st.write("Burada Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
 
 # Alt menü
 if st.sidebar.checkbox("Ayarlar"):
