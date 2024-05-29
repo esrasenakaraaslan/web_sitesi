@@ -1,4 +1,8 @@
 import streamlit as st
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -84,3 +88,20 @@ st.markdown('<img src="https://via.placeholder.com/800x200/FF0000/FFFFFF?text=Fr
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+
+# Makine öğrenimi modelini eğitmek için gerekli kütüphaneleri ekleyin
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# İş ilanı verilerini yükleyin
+ilan_verileri = pd.read_csv("ilan_verileri.csv")
+
+# Verileri işlemek için gereken işlevler
+def preprocess_data(data):
+    # Veri ön işleme adımlarını burada gerçekleştirin
+    pass
+
+# Eğitim verilerini ve etiketleri ayırın
+X = preprocess_data(ilan_ver
