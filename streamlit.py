@@ -1,74 +1,67 @@
 import streamlit as st
 
-# main fonksiyonu tanımlama
+# Uygulama ayarları
+st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
+
+# Özel CSS ile stil ayarları
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f0f2f6; /* Arka plan rengi */
+    }
+    .stButton>button {
+        color: white;
+        background-color: #1f77b4; /* Buton arka plan rengi */
+        border: none;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+    }
+    .stButton>button:hover {
+        background-color: #45a049; /* Buton hover rengi */
+    }
+    .header-title {
+        color: #1f77b4; /* Başlık rengi */
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .info-box {
+        background-color: #ffffff; /* Bilgi kutusu arka plan rengi */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        font-family: 'Arial', sans-serif;
+    }
+    .info-box p {
+        margin: 0;
+    }
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 12px;
+        color: #888;
+    }
+    .background-image {
+        width: 100%;
+        height: auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 def main():
-    # Uygulama ayarları
-    st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
-
-    # Özel CSS ile stil ayarları
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #f0f2f6;
-        }
-        .stButton>button {
-            color: white;
-            background-color: #1f77b4;
-            border: none;
-            padding: 10px 24px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 12px;
-            transition-duration: 0.4s;
-        }
-        .stButton>button:hover {
-            background-color: #45a049;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .header-title {
-            color: #1f77b4;
-            font-family: 'Arial', sans-serif;
-            margin-left: 10px;
-        }
-        .header-image {
-            width: 50px;
-            height: auto;
-            margin-right: 10px;
-        }
-        .info-box {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-        }
-        .info-box p {
-            margin: 0;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 12px;
-            color: #888;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Üst kısım (header)
-    st.markdown('<div class="header"><img src="file:///C:/Users/esras/Downloads/Meyve%20Elma%20Sevimli%20Karakter%2C%20K%C4%B1rm%C4%B1z%C4%B1%2C%20Elma%2C%20Sevimli%20PNG%20Resim%20%C5%9Eeffaf%20ve%20%C3%A7izimi%20%C3%9Ccretsiz%20%C4%B0ndirilebilir_files/image001.png" class="header-image"><h1 class="header-title">FreshData İş İlanı Sitesi</h1></div>', unsafe_allow_html=True)
+    # Başlık
+    st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
     # Üçlü kolonlar ve butonlar
     col1, col2, col3 = st.columns(3)
@@ -92,11 +85,11 @@ def main():
         st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
     # Görsel ekleme
-    st.image("file:///C:/Users/esras/Downloads/Meyve%20Elma%20Sevimli%20Karakter%2C%20K%C4%B1rm%C4%B1z%C4%B1%2C%20Elma%2C%20Sevimli%20PNG%20Resim%20%C5%9Eeffaf%20ve%20%C3%A7izimi%20%C3%9Ccretsiz%20%C4%B0ndirilebilir_files/image001.png", use_column_width=True)
+    st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True, 
+             caption="FreshData İş İlanı Sitesi", format="JPEG")
 
     # Footer
     st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
 
-# main fonksiyonunu çağırma
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
