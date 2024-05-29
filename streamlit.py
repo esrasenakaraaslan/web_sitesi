@@ -92,7 +92,31 @@ st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
 st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 1</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
 
 # Makale 2
-st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 2</h3><p>Bilişim Sektöründe Gelecek: Veri Analizi ve İş İlanları
 
-# Makale 3
-st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 3</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
+Günümüzde teknoloji, iş dünyasını derinden etkileyen bir güç haline geldi. Özellikle bilişim sektörü, hızla büyüyen ve gelişen bir alandır. Bu alandaki eğilimleri anlamak ve geleceği öngörmek, hem iş arayanlar hem de işverenler için kritik öneme sahiptir.
+
+Bilişimde Kariyer Yolculuğu
+
+Bilişim sektöründe kariyer yapmak isteyenler için, doğru işi bulmak önemlidir. Ancak, doğru işi bulmak bazen zor olabilir. Bu noktada, veri analizi devreye girer. Veri analizi, iş ilanlarının analiz edilmesi ve sektördeki eğilimlerin belirlenmesi açısından büyük bir potansiyele sahiptir.
+
+FreshData: İş Arayanlar İçin Yenilikçi Bir Platform
+
+FreshData, iş arayanlara her konuda yardımcı olacak yenilikçi bir web sitesidir. Bilişim sektöründeki iş ilanlarını çıkarıp analiz ederek, iş arayanlara en güncel ve uygun iş fırsatlarını sunar. Aynı zamanda, bilişim sektörünün gelecekteki eğilimlerini belirlemek için veri analizi kullanır.
+
+Veri Analizi ile Geleceği Öngörmek
+
+FreshData'nın en güçlü yanlarından biri, veri analiziyle bilişim sektöründeki eğilimleri belirleyebilmesidir. Bu sayede, iş arayanlar hangi alanlarda daha fazla iş fırsatı bulabileceklerini önceden görebilirler. Ayrıca, işverenler de gelecekteki taleplerini daha iyi anlayarak doğru adımlar atabilirler.
+
+Yaratıcı ve Renkli Bir Platform
+
+FreshData, sadece iş ilanlarına odaklanmakla kalmaz, aynı zamanda kullanıcılarını eğlenceli ve etkileyici bir deneyim sunar. Pembe ve mor gibi canlı renkler kullanarak, platformun görünümü daha çekici hale getirilmiştir. Makaleler ve görsellerle desteklenen içerikler, kullanıcıların bilgiye daha kolay erişmesini sağlar.
+
+Geleceğe Yönelik İşbirlikleri
+
+FreshData, bilişim sektöründeki önde gelen şirketlerle işbirliği yaparak, kullanıcılarına daha fazla fırsat sunmayı hedefler. Ayrıca, veri analizi alanındaki uzmanlarla ortak projeler yürüterek, bilişim sektörünün geleceğine dair daha kapsamlı bir bakış açısı sağlar.
+
+Sonuç
+
+Bilişim sektöründe kariyer yapmak isteyenler ve işverenler için, doğru bilgiye erişmek büyük önem taşır. FreshData, veri analizi ve yenilikçi yaklaşımıyla bu ihtiyacı karşılar. Geleceğe yönelik işbirlikleri ve eğlenceli kullanıcı deneyimiyle, bilişim sektöründe yeni bir dönemi başlatır..</p></div>', unsafe_allow_html=True)
+
