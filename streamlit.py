@@ -1,92 +1,88 @@
 import streamlit as st
 
-# main fonksiyonu tanımlama
+# Kullanıcılar ve iş ilanları için veri saklama
+users = {"john": "password123", "emma": "abc123"}
+jobs = [
+    {"title": "Data Scientist", "company": "TechCorp", "location": "Remote", "salary": "$100,000"},
+    {"title": "Software Engineer", "company": "SoftTech", "location": "New York", "salary": "$120,000"},
+    {"title": "Product Manager", "company": "BigCo", "location": "San Francisco", "salary": "$150,000"},
+]
+
+# Ana sayfa
+def home_page():
+    st.title("FreshData İş İlanı Sitesi")
+    st.markdown("""
+        ### Hoş Geldiniz!
+        Bu web sitesi aracılığıyla iş arayabilir ve ilan verebilirsiniz.
+    """)
+    if st.button("Giriş Yap"):
+        login_page()
+
+    if st.button("Kayıt Ol"):
+        register_page()
+
+# Giriş sayfası
+def login_page():
+    st.title("Giriş Yap")
+    username = st.text_input("Kullanıcı Adı")
+    password = st.text_input("Şifre", type="password")
+    if st.button("Giriş Yap"):
+        if username in users and users[username] == password:
+            st.success(f"Başarıyla giriş yapıldı: {username}")
+            job_board(username)
+        else:
+            st.error("Geçersiz kullanıcı adı veya şifre!")
+
+# Kayıt sayfası
+def register_page():
+    st.title("Kayıt Ol")
+    new_username = st.text_input("Yeni Kullanıcı Adı")
+    new_password = st.text_input("Yeni Şifre", type="password")
+    if st.button("Kayıt Ol"):
+        if new_username in users:
+            st.error("Bu kullanıcı adı zaten kullanılıyor!")
+        else:
+            users[new_username] = new_password
+            st.success("Kayıt başarıyla tamamlandı! Lütfen giriş yapın.")
+            login_page()
+
+# İş ilanı panosu
+def job_board(username):
+    st.title("İş İlanları")
+    st.markdown("### İş İlanları")
+    for job in jobs:
+        st.write(f"{job['title']}** - {job['company']} - {job['location']} - {job['salary']}")
+        if st.button("Detayları Gör"):
+            job_details(job, username)
+
+# İş ilanı detayları sayfası
+def job_details(job, username):
+    st.title("İş İlanı Detayları")
+    st.write(f"{job['title']}** - {job['company']} - {job['location']} - {job['salary']}")
+    st.markdown("""
+        ### Detaylar
+        Bu alanda iş ilanının detayları yer alacak.
+    """)
+    if st.button("Başvur"):
+        st.success("Başvurunuz alınmıştır!")
+    if st.button("Favorilere Ekle"):
+        st.success("İlan favorilere eklendi!")
+        favorite_jobs(username, job)
+
+# Favori iş ilanları sayfası
+def favorite_jobs(username, job):
+    st.title("Favori İş İlanları")
+    st.write(f"{job['title']} - {job['company']} - {job['location']} - {job['salary']}")
+    st.markdown("""
+        ### Favori İlanlarınız
+        Bu alanda favorilere eklediğiniz iş ilanlarınız listelenecek.
+    """)
+    if st.button("Başvur"):
+        st.success("Başvurunuz alınmıştır!")
+
+# Ana uygulama
 def main():
-    # Uygulama ayarları
-    st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
+    home_page()
 
-    # Özel CSS ile stil ayarları
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #f0f2f6;
-        }
-        .stButton>button {
-            color: white;
-            background-color: #1f77b4;
-            border: none;
-            padding: 10px 24px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 12px;
-            transition-duration: 0.4s;
-        }
-        .stButton>button:hover {
-            background-color: #45a049;
-        }
-        .header-title {
-            color: #1f77b4;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .info-box {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-        }
-        .info-box p {
-            margin: 0;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 12px;
-            color: #888;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Başlık
-    st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
-
-    # Üçlü kolonlar ve butonlar
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        if st.button("İş Bul", key="iş_bul_button"):
-            st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-    with col2:
-        if st.button("Meslek Grupları", key="meslek_grupları_button"):
-            st.markdown('<div class="info-box"><p>Burada meslek gruplarına göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-    with col3:
-        if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
-            st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
-
-    # Ek bir buton ve bilgi kutusu
-    st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
-
-    if st.button("İşveren Girişi", key="isveren_girisi_button"):
-        st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-    # Görsel ekleme
-    st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True)
-
-    # Footer
-    st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
-
-# main fonksiyonunu çağırma
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
