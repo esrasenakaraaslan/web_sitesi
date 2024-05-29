@@ -80,6 +80,8 @@ if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Hakkımızda butonu
+button_click_counts = {"hakkimizda_button": 0}
+
 if st.button("Hakkımızda", key="hakkimizda_button"):
     button_click_counts["hakkimizda_button"] += 1
     if button_click_counts["hakkimizda_button"] % 2 == 0:
