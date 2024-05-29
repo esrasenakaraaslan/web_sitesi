@@ -104,4 +104,4 @@ def preprocess_data(data):
     pass
 
 # Eğitim verilerini ve etiketleri ayırın
-X = preprocess_data(ilan_ver
+X = preprocess_data(ilan_ver)
