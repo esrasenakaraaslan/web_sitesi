@@ -6,7 +6,7 @@ def main():
         """
         <style>
         .fuşya {
-            background-color: #FF007F;
+            background-color: #864BD8;
             color: white;
             padding: 10px 20px;
             font-size: 18px;
