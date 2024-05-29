@@ -2,12 +2,12 @@ import streamlit as st
 
 def main():
     st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
-
+    
     # Custom CSS for styling
     st.markdown(
         """
         <style>
-        .main {
+        body {
             background-color: #f0f2f6;
         }
         .stButton>button {
