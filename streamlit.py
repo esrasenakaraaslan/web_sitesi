@@ -34,7 +34,7 @@ selection = st.sidebar.radio("Sayfa Seç", ["Ana Sayfa", "İletişim"])
 # Main Page
 if selection == "Ana Sayfa":
     st.title("Merhaba, Dünya!")
-    st.write("Streamlit ile Google Colab üzerinde ilk web uygulamanızı oluşturuyorsunuz.")
+    st.write("Streamlit ile GitHub üzerinden web uygulamanızı oluşturuyorsunuz.")
     
     if st.button('Tıklayın'):
         st.write('Butona tıkladınız!')
