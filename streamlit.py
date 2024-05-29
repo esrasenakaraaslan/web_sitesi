@@ -32,13 +32,14 @@ def main():
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             margin-top: 20px;
             margin-bottom: 20px;
         }
         .header-title {
             color: #1f77b4;
             font-family: 'Arial', sans-serif;
+            margin-left: 10px;
         }
         .header-image {
             width: 50px;
@@ -67,7 +68,7 @@ def main():
     )
 
     # Üst kısım (header)
-    st.markdown('<div class="header"><h1 class="header-title">FreshData İş İlanı Sitesi</h1><img src="https://via.placeholder.com/50x50.png?text=🍎" class="header-image"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header"><img src="https://via.placeholder.com/50x50.png?text=🍎" class="header-image"><h1 class="header-title">FreshData İş İlanı Sitesi</h1></div>', unsafe_allow_html=True)
 
     # Üçlü kolonlar ve butonlar
     col1, col2, col3 = st.columns(3)
@@ -99,4 +100,3 @@ def main():
 # main fonksiyonunu çağırma
 if __name__ == "__main__":
     main()
-
