@@ -29,11 +29,20 @@ def main():
         .stButton>button:hover {
             background-color: #45a049;
         }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
         .header-title {
             color: #1f77b4;
             font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin-top: 20px;
+        }
+        .header-image {
+            width: 50px;
+            height: auto;
         }
         .info-box {
             background-color: #ffffff;
@@ -57,8 +66,8 @@ def main():
         unsafe_allow_html=True
     )
 
-    # Başlık
-    st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
+    # Üst kısım (header)
+    st.markdown('<div class="header"><h1 class="header-title">FreshData İş İlanı Sitesi</h1><img src="https://via.placeholder.com/50x50.png?text=🍎" class="header-image"></div>', unsafe_allow_html=True)
 
     # Üçlü kolonlar ve butonlar
     col1, col2, col3 = st.columns(3)
