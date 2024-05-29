@@ -5,11 +5,10 @@ import pandas as pd
 page_bg_img = '''
 <style>
 body {
-background: linear-gradient(to right, #ff7e5f, #feb47b);
+background-color: #FF00FF;
 }
 </style>
 '''
 
 st.markdown(page_bg_img, unsafe_allow_html=True)
-
 
