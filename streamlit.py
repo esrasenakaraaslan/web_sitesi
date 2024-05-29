@@ -50,11 +50,6 @@ st.markdown(
         font-size: 12px;
         color: #888;
     }
-    .custom-image {
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
     </style>
     """,
     unsafe_allow_html=True
@@ -85,7 +80,19 @@ if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Görsel ekleme
-st.image("https://via.placeholder.com/800x200/FFA500/FFFFFF?text=FreshData+İş+İlanı+Sitesi", caption="FreshData İş İlanı S", use_column_width=True)
+st.markdown('<img src="https://via.placeholder.com/800x200/FF0000/FFFFFF?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+
+# Makaleler bölümü
+st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
+
+# Makale 1
+st.markdown('<div class="info-box"><h3>Başlık 1</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
+
+# Makale 2
+st.markdown('<div class="info-box"><h3>Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
+
+# Makale 3
+st.markdown('<div class="info-box"><h3>Başlık 3</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
