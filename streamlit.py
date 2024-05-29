@@ -12,7 +12,7 @@ st.markdown(
     }
     .stButton>button {
         color: white;
-        background-color: #1f77b4;
+        background-color: #FF5733; /* Yeni renk */
         border: none;
         padding: 10px 24px;
         text-align: center;
@@ -25,16 +25,16 @@ st.markdown(
         transition-duration: 0.4s;
     }
     .stButton>button:hover {
-        background-color: #45a049;
+        background-color: #FFC300; /* Yeni renk */
     }
     .header-title {
-        color: #1f77b4;
+        color: #E74C3C; /* Yeni renk */
         font-family: 'Arial', sans-serif;
         text-align: center;
         margin-top: 20px;
     }
     .info-box {
-        background-color: #ffffff;
+        background-color: #D2B4DE; /* Yeni renk */
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -80,7 +80,7 @@ if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Görsel ekleme
-st.markdown('<img src="https://via.placeholder.com/800x200/FF0000/FFFFFF?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
+st.markdown('<img src="https://via.placeholder.com/800x200/FF5733/FFFFFF?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
@@ -89,8 +89,8 @@ st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>'
 st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
 
 # Makale 1
-st.markdown('<div class="info-box"><h3>Başlık 1</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="info-box" style="background-color: #FFC300;"><h3 style="color: #E74C3C;">Başlık 1</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
 
 # Makale 2
-st.markdown('<div class="info-box"><h3>Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="info-box" style="background-color: #FFC300;"><h3 style="color: #E74C3C;">Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
 
