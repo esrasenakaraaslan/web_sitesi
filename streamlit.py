@@ -1,92 +1,32 @@
 import streamlit as st
-import pandas as pd
 
-# Uygulama başlığı ve alt başlık
-st.title("FreshData İş İlanı Sitesi")
-st.markdown("""
-  ### Hoş Geldiniz!
-  Bu web sitesi aracılığıyla iş arama ve bilgi edinme işlevlerini kullanabilirsiniz.
-""")
+def main():
+    st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
+    st.markdown(
+        """
+        <style>
+        .fuşya {
+            background-color: #FF007F;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Arka plan rengi ve resmi
-st.markdown(
-  """
-  <style>
-  body {
-    background-color: #f0f2f6;
-  }
-  .stApp {
-    background-image: url("ilan_arkaplani.jpg");  # Gerçek resim dosyasının adını ve yolunu kullanın
-    background-size: cover;
-  }
-  .button {
-    background-color: #1f77b4;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  .button:hover {
-    background-color: #45a049;
-  }
-  </style>
-  """,
-  unsafe_allow_html=True
-)
+    st.title("FreshData İş İlanı Sitesi")
 
-# Ana menü
-menu = st.radio("Menü", ("İş Bul", "Meslek Grupları", "Türkiye'nin Durumu", "Hakkımızda"))
+    if st.button("İş Bul", key="iş_bul_button"):
+        st.write("Burada iş bulma işlevi gelecek.")
 
-# İş Bul seçeneği
-if menu == "İş Bul":
-  st.header("İş Bulma İşlevi")
-  ilan_secimi = st.selectbox("Meslek Grubu Seçiniz", data["Meslek Grubu"].unique())
-  ilanlar = data[data["Meslek Grubu"] == ilan_secimi]
-  st.write(ilanlar)
-  if st.button("Başvur", key="iş_bul_button", class="button"):
-    st.write("Burada iş bulma işlevi gelecek.")
+    if st.button("Meslek Grupları", key="meslek_grupları_button"):
+        st.write("Burada meslek gruplarına göre iş arama işlevi gelecek.")
 
-# Meslek Grupları seçeneği
-elif menu == "Meslek Grupları":
-  st.header("Meslek Gruplarına Göre İş Arama")
-  meslek_gruplari = data["Meslek Grubu"].unique()
-  for grup in meslek_gruplari:
-    st.subheader(grup)
-    st.write(data[data["Meslek Grubu"] == grup])
+    if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
+        st.write("Burada Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
 
-# Türkiye'nin Durumu seçeneği
-elif menu == "Türkiye'nin Durumu":
-  st.header("Türkiye'nin Durumu")
-  # Burada Türkiye'nin durumu ile ilgili verileri gösterin
-  st.write("Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
-
-# Hakkımızda seçeneği
-elif menu == "Hakkımızda":
-  st.header("Hakkımızda")
-  st.write("""
-  FreshData, iş arayanlar ve işverenler arasında köprü oluşturan bir platformdur.
-  Misyonumuz, iş arayanlara istedikleri işi bulmaları konusunda destek olmak ve işverenlere kaliteli iş gücü sağlamaktır.
-  """)
-
-# Alt menü
-if st.sidebar.checkbox("Ayarlar"):
-  st.sidebar.subheader("Ayarlar")
-  karanlik_mod = st.sidebar.checkbox("Karanlık Modu")
-  dil_secimi = st.sidebar.selectbox("Dil Seçimi", ["Türkçe", "İngilizce", "Almanca"])
-
-# Karanlık Mod uygulaması
-if karanlik_mod:
-  st.markdown(
-    """
-    <style>
-    body {
-      background-color: #212121;
-      color: #ffffff;
-    }
-    .stApp {
-      background-color: #333333;
-    }
-    .button {
-      background-color: #007
+if __name__ == "__main__":
+    main() 
