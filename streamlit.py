@@ -1,65 +1,62 @@
 import streamlit as st
 
-# Uygulama ayarları
-st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
-
-# Özel CSS ile stil ayarları
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #f0f2f6; /* Arka plan rengi */
-    }
-    .stButton>button {
-        color: white;
-        background-color: #1f77b4; /* Buton arka plan rengi */
-        border: none;
-        padding: 10px 24px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 12px;
-        transition-duration: 0.4s;
-    }
-    .stButton>button:hover {
-        background-color: #45a049; /* Buton hover rengi */
-    }
-    .header-title {
-        color: #1f77b4; /* Başlık rengi */
-        font-family: 'Arial', sans-serif;
-        text-align: center;
-        margin-top: 20px;
-    }
-    .info-box {
-        background-color: #ffffff; /* Bilgi kutusu arka plan rengi */
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        font-family: 'Arial', sans-serif;
-    }
-    .info-box p {
-        margin: 0;
-    }
-    .footer {
-        text-align: center;
-        margin-top: 50px;
-        font-size: 12px;
-        color: #888;
-    }
-    .background-image {
-        width: 100%;
-        height: auto;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
+# main fonksiyonu tanımlama
 def main():
+    # Uygulama ayarları
+    st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
+
+    # Özel CSS ile stil ayarları
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #f0f2f6;
+        }
+        .stButton>button {
+            color: white;
+            background-color: #1f77b4;
+            border: none;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+        }
+        .stButton>button:hover {
+            background-color: #45a049;
+        }
+        .header-title {
+            color: #1f77b4;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .info-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+        .info-box p {
+            margin: 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #888;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     # Başlık
     st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
@@ -85,11 +82,11 @@ def main():
         st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
     # Görsel ekleme
-    st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True, 
-             caption="FreshData İş İlanı Sitesi", format="JPEG")
+    st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True)
 
     # Footer
     st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
 
-if _name_ == "_main_":
+# main fonksiyonunu çağırma
+if __name__ == "__main__":
     main()
