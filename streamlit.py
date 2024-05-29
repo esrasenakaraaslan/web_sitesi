@@ -1,81 +1,92 @@
 import streamlit as st
 
-# Uygulama başlığı ve alt başlık
-st.title("FreshData İş İlanı Sitesi")
-st.markdown("""
-    ### Hoş Geldiniz!
-    Bu web sitesi aracılığıyla iş arama ve bilgi edinme işlevlerini kullanabilirsiniz.
-""")
+# main fonksiyonu tanımlama
+def main():
+    # Uygulama ayarları
+    st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 
-# Arka plan rengi ve resmi
-st.markdown(
-    """
-    <style>
-    body {
-        background-color: #f0f2f6;
-    }
-    .stApp {
-        background-image: url("https://via.placeholder.com/1200x400.png?text=FreshData+İş+İlanı+Sitesi");
-        background-size: cover;
-    }
-    .button {
-        background-color: #1f77b4;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    .button:hover {
-        background-color: #45a049;
-    }
-    .header-title {
-        color: #1f77b4;
-        font-family: 'Arial', sans-serif;
-        text-align: center;
-    }
-    .info-box {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+    # Özel CSS ile stil ayarları
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #f0f2f6;
+        }
+        .stButton>button {
+            color: white;
+            background-color: #1f77b4;
+            border: none;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+        }
+        .stButton>button:hover {
+            background-color: #45a049;
+        }
+        .header-title {
+            color: #1f77b4;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .info-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+        .info-box p {
+            margin: 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 12px;
+            color: #888;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-# Ana menü
-menu = st.radio("Menü", ("İş Bul", "Meslek Grupları", "Türkiye'nin Durumu"))
+    # Başlık
+    st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# İş Bul seçeneği
-if menu == "İş Bul":
-    st.header("İş Bulma İşlevi")
-    if st.button("İş Bul", key="iş_bul_button", class="button"):
-        st.write("Burada iş bulma işlevi gelecek.")
+    # Üçlü kolonlar ve butonlar
+    col1, col2, col3 = st.columns(3)
 
-# Meslek Grupları seçeneği
-elif menu == "Meslek Grupları":
-    st.header("Meslek Gruplarına Göre İş Arama")
-    if st.button("Meslek Grupları", key="meslek_grupları_button", class="button"):
-        st.write("Burada meslek gruplarına göre iş arama işlevi gelecek.")
+    with col1:
+        if st.button("İş Bul", key="iş_bul_button"):
+            st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-# Türkiye'nin Durumu seçeneği
-elif menu == "Türkiye'nin Durumu":
-    st.header("Türkiye'nin Durumu")
-    if st.button("Türkiye'nin Durumu", key="son_nokta_button", class="button"):
-        st.write("Burada Türkiye'nin geldiği son noktayla ilgili bilgiler yer alacak.")
+    with col2:
+        if st.button("Meslek Grupları", key="meslek_grupları_button"):
+            st.markdown('<div class="info-box"><p>Burada meslek gruplarına göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-# Alt menü
-if st.sidebar.checkbox("Ayarlar"):
-    st.sidebar.subheader("Ayarlar")
-    st.sidebar.checkbox("Karanlık Modu")
-    st.sidebar.selectbox("Dil Seçimi", ["Türkçe", "İngilizce", "Almanca"])
+    with col3:
+        if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
+            st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
 
-# Footer
-st.markdown("""
----
-© 2024 FreshData. Tüm hakları saklıdır.
-""")
+    # Ek bir buton ve bilgi kutusu
+    st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
+
+    if st.button("İşveren Girişi", key="isveren_girisi_button"):
+        st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
+
+    # Görsel ekleme
+    st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True)
+
+    # Footer
+    st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+
+# main fonksiyonunu çağırma
+if __name__ == "__main__":
+    main()
