@@ -94,5 +94,3 @@ st.markdown('<div class="info-box"><h3>Başlık 1</h3><p>Burada makale içeriği
 # Makale 2
 st.markdown('<div class="info-box"><h3>Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
 
-# Makale 3
-st.markdown('<div class="info-box"><h3>Başlık 3</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
