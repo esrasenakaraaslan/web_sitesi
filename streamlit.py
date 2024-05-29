@@ -68,7 +68,7 @@ def main():
     )
 
     # Üst kısım (header)
-    st.markdown('<div class="header"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Apple-black.svg/512px-Apple-black.svg.png" class="header-image"><h1 class="header-title">FreshData İş İlanı Sitesi</h1></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header"><img src="file:///C:/Users/esras/Downloads/Meyve%20Elma%20Sevimli%20Karakter%2C%20K%C4%B1rm%C4%B1z%C4%B1%2C%20Elma%2C%20Sevimli%20PNG%20Resim%20%C5%9Eeffaf%20ve%20%C3%A7izimi%20%C3%9Ccretsiz%20%C4%B0ndirilebilir_files/image001.png" class="header-image"><h1 class="header-title">FreshData İş İlanı Sitesi</h1></div>', unsafe_allow_html=True)
 
     # Üçlü kolonlar ve butonlar
     col1, col2, col3 = st.columns(3)
@@ -92,7 +92,7 @@ def main():
         st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
     # Görsel ekleme
-    st.image("https://via.placeholder.com/800x200.png?text=FreshData+İş+İlanı+Sitesi", use_column_width=True)
+    st.image("file:///C:/Users/esras/Downloads/Meyve%20Elma%20Sevimli%20Karakter%2C%20K%C4%B1rm%C4%B1z%C4%B1%2C%20Elma%2C%20Sevimli%20PNG%20Resim%20%C5%9Eeffaf%20ve%20%C3%A7izimi%20%C3%9Ccretsiz%20%C4%B0ndirilebilir_files/image001.png", use_column_width=True)
 
     # Footer
     st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
