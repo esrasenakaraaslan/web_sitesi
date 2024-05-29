@@ -1,11 +1,10 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import plotly.express as px
 
 # CSS for custom styling
 st.markdown(
-    """
+    
     <style>
     .stButton>button {
         color: white;
@@ -23,7 +22,7 @@ st.markdown(
         background-color: #45a049;
     }
     </style>
-    """,
+    ,
     unsafe_allow_html=True
 )
 
