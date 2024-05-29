@@ -1,62 +1,61 @@
 import streamlit as st
 
-# main fonksiyonu tanımlama
+# Uygulama ayarları
+st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
+
+# Özel CSS ile stil ayarları
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f0f2f6;
+    }
+    .stButton>button {
+        color: white;
+        background-color: #1f77b4;
+        border: none;
+        padding: 10px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+    }
+    .stButton>button:hover {
+        background-color: #45a049;
+    }
+    .header-title {
+        color: #1f77b4;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .info-box {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        font-family: 'Arial', sans-serif;
+    }
+    .info-box p {
+        margin: 0;
+    }
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 12px;
+        color: #888;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 def main():
-    # Uygulama ayarları
-    st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
-
-    # Özel CSS ile stil ayarları
-    st.markdown(
-        """
-        <style>
-        body {
-            background-color: #f0f2f6;
-        }
-        .stButton>button {
-            color: white;
-            background-color: #1f77b4;
-            border: none;
-            padding: 10px 24px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 12px;
-            transition-duration: 0.4s;
-        }
-        .stButton>button:hover {
-            background-color: #45a049;
-        }
-        .header-title {
-            color: #1f77b4;
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .info-box {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            font-family: 'Arial', sans-serif;
-        }
-        .info-box p {
-            margin: 0;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 12px;
-            color: #888;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
     # Başlık
     st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
@@ -87,6 +86,6 @@ def main():
     # Footer
     st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
 
-# main fonksiyonunu çağırma
-if __name__ == "__main__":
+# Main fonksiyonu tanımlanmış ve çağrılmış
+if _name_ == "_main_":
     main()
