@@ -61,21 +61,17 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# GitHub'dan Excel dosyasını yükleme
-excel_url = 'https://github.com/esrasenakaraaslan/web_sitesi/raw/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx'
+# Veri setini yükleme
+veri_seti_url = 'https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/tm_veriler.xlsx'
 
 try:
-    response = requests.get(excel_url)
+    response = requests.get(veri_seti_url)
     response.raise_for_status()  # HTTP hatalarını kontrol et
     excel_data = BytesIO(response.content)
-    df = pd.read_excel(excel_data, engine='openpyxl')
+    df = pd.read_excel(excel_data)
     st.dataframe(df)
 except requests.exceptions.RequestException as e:
     st.error(f"Dosya indirilirken bir hata oluştu: {e}")
-except ImportError as e:
-    st.error(f"Gerekli bir kütüphane eksik: {e}. Lütfen 'pip install openpyxl' komutunu çalıştırarak yükleyin.")
-except Exception as e:
-    st.error(f"Beklenmedik bir hata oluştu: {e}")
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -83,6 +79,16 @@ col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("İş Bul", key="iş_bul_button"):
         st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
+
+        # İş Bul butonunun altındaki butonlar
+        if st.button("Konum", key="konum_button"):
+            st.markdown('<div class="info-box"><p>Konuma göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
+
+        if st.button("Pozisyon", key="pozisyon_button"):
+            st.markdown('<div class="info-box"><p>Pozisyona göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
+
+        if st.button("Çalışma Şekli", key="calisma_sekli_button"):
+            st.markdown('<div class="info-box"><p>Çalışma şekline göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 with col2:
     if st.button("Meslek Grupları", key="meslek_grupları_button"):
@@ -95,11 +101,11 @@ with col3:
 # Ek bir buton ve bilgi kutusu
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
+# İşveren Girişi butonu
 if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Görsel ekleme
-st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 
 st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
 
 # Footer
@@ -112,20 +118,12 @@ st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
 if st.button("Makale 1"):
     st.markdown('''
     ## Bilişim Sektöründeki İstihdam Analizi
-
-    ### Giriş
-
-    Bilişim sektörü, teknolojik gelişmelerin hız kesmeden devam ettiği günümüz dünyasında ekonomik büyümenin itici güçlerinden biri haline gelmiştir. Özellikle pandemi süreci, dijitalleşmenin ve uzaktan çalışmanın önemini artırmış ve bilişim sektörüne olan talebi daha da yükseltmiştir. Bu makalede, pandemi sonrasında Türkiye'nin özellikle İstanbul, Ankara ve çevre illerinde bilişim sektöründeki istihdamın analizini yaparak, hangi meslek gruplarının en çok rağbet gördüğünü inceleyeceğiz.
-
+    ...
     ''', unsafe_allow_html=True)
 
 # Makale 2
 if st.button("Makale 2"):
     st.markdown('''
     ## Yapay Zeka ve İnsan Kaynakları: Geleceğin İş Gücü Yönetimi
-
-    ### Giriş
-
-    Yapay zeka (YZ), son yıllarda iş dünyasında büyük bir devrim yaratmıştır. Özellikle insan kaynakları yönetimi gibi alanlarda, YZ'nin kullanımı iş süreçlerini optimize etmekte ve verimliliği artırmaktadır. Bu makalede, yapay zeka destekli insan kaynakları yönetiminin önemi ve gelecekte iş gücü yönetimindeki rolü ele alınacaktır.
-
+    ...
     ''', unsafe_allow_html=True)
