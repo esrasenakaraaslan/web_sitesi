@@ -61,6 +61,8 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
+# GitHub'dan Excel dosyasını yükleme
+excel_url = 'https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx'
 
 try:
     response = requests.get(excel_url)
@@ -70,6 +72,20 @@ try:
     st.dataframe(df)
 except requests.exceptions.RequestException as e:
     st.error(f"Dosya indirilirken bir hata oluştu: {e}")
+
+# Filtreleme seçenekleri
+st.sidebar.header("Filtreleme Seçenekleri")
+sehirler = df['Konum'].unique()
+sektorler = df['Pozisyon'].unique()
+
+secilen_sehir = st.sidebar.selectbox("Şehir Seçin", options=sehirler)
+secilen_sektor = st.sidebar.selectbox("Sektör Seçin", options=sektorler)
+
+filtrelenmis_df = df[(df['Konum'] == secilen_sehir) & (df['Pozisyon'] == secilen_sektor)]
+
+# Filtrelenmiş iş ilanlarını gösterme
+st.markdown(f"### {secilen_sehir} şehrindeki {secilen_sektor} sektörü iş ilanları")
+st.dataframe(filtrelenmis_df)
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -149,9 +165,7 @@ if st.button("Makale 1"):
 
     #### İş Geliştirme Uzmanı ve İş Analisti
 
-    İş geliştirme uzmanları ve
-    # İş Geliştirme Uzmanı ve İş Analisti
-    iş geliştirme uzmanları ve iş analistleri, iş süreçlerini iyileştirmek ve şirket stratejilerini geliştirmek için çalışırlar. Pandemi sonrası dönemde, şirketlerin rekabet gücünü artırmak için bu uzmanlara olan talep artmıştır.
+    İş geliştirme uzmanları ve iş analistleri, iş süreçlerini iyileştirmek ve şirket stratejilerini geliştirmek için çalışırlar. Pandemi sonrası dönemde, şirketlerin rekabet gücünü artırmak için bu uzmanlara olan talep artmıştır.
 
     #### ERP Uzmanı ve Proje Yöneticisi / Yönetmeni
 
