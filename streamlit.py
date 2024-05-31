@@ -61,8 +61,6 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# GitHub'dan Excel dosyasını yükleme
-excel_url = 'https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/tm_veriler.xlsx'
 
 try:
     response = requests.get(excel_url)
