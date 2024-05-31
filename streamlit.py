@@ -62,7 +62,7 @@ st.markdown(
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
 # GitHub'dan Excel dosyasını yükleme
-excel_url = 'https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/tm_veriler.xlsx'
+excel_url = 'https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx'
 
 try:
     response = requests.get(excel_url)
@@ -72,6 +72,24 @@ try:
     st.dataframe(df)
 except requests.exceptions.RequestException as e:
     st.error(f"Dosya indirilirken bir hata oluştu: {e}")
+except ImportError as e:
+    st.error("Gerekli bir kütüphane eksik: openpyxl. Lütfen 'pip install openpyxl' komutunu çalıştırarak yükleyin.")
+except Exception as e:
+    st.error(f"Bir hata oluştu: {e}")
+
+# Filtreleme seçenekleri
+st.sidebar.header("Filtreleme Seçenekleri")
+sehirler = df['Şehir'].unique()
+sektorler = df['Sektör'].unique()
+
+secilen_sehir = st.sidebar.selectbox("Şehir Seçin", options=sehirler)
+secilen_sektor = st.sidebar.selectbox("Sektör Seçin", options=sektorler)
+
+filtrelenmis_df = df[(df['Şehir'] == secilen_sehir) & (df['Sektör'] == secilen_sektor)]
+
+# Filtrelenmiş iş ilanlarını gösterme
+st.markdown(f"### {secilen_sehir} şehrindeki {secilen_sektor} sektörü iş ilanları")
+st.dataframe(filtrelenmis_df)
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -79,16 +97,6 @@ col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("İş Bul", key="iş_bul_button"):
         st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-        # İş Bul butonunun altındaki butonlar
-        if st.button("Konum", key="konum_button"):
-            st.markdown('<div class="info-box"><p>Konuma göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-        if st.button("Pozisyon", key="pozisyon_button"):
-            st.markdown('<div class="info-box"><p>Pozisyona göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-        if st.button("Çalışma Şekli", key="calisma_sekli_button"):
-            st.markdown('<div class="info-box"><p>Çalışma şekline göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 with col2:
     if st.button("Meslek Grupları", key="meslek_grupları_button"):
@@ -101,21 +109,8 @@ with col3:
 # Ek bir buton ve bilgi kutusu
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
-# İşveren Girişi ve dosya ekleme butonları
-col4, col5 = st.columns([1, 2])
-
-with col4:
-    st.button("İşveren Girişi", key="isveren_girisi_button")
-
-with col5:
-    if st.button("Dosya Ekle", key="dosya_ekle_button"):
-        if 'file_content' not in st.session_state:
-            st.session_state.file_content = ""
-        st.markdown('<div class="info-box"><p>Boş dosya oluşturuldu. URL eklemek için aşağıya URL girin.</p></div>', unsafe_allow_html=True)
-        url_input = st.text_input("URL Girin")
-        if st.button("URL Ekle"):
-            st.session_state.file_content = url_input
-            st.success(f"URL eklendi: {url_input}")
+if st.button("İşveren Girişi", key="isveren_girisi_button"):
+    st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Görsel ekleme
 st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
@@ -130,12 +125,73 @@ st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
 if st.button("Makale 1"):
     st.markdown('''
     ## Bilişim Sektöründeki İstihdam Analizi
-    ...
+
+    ### Giriş
+
+    Bilişim sektörü, teknolojik gelişmelerin hız kesmeden devam ettiği günümüz dünyasında ekonomik büyümenin itici güçlerinden biri haline gelmiştir. Özellikle pandemi süreci, dijitalleşmenin ve uzaktan çalışmanın önemini artırmış ve bilişim sektörüne olan talebi daha da yükseltmiştir. Bu makalede, pandemi sonrasında Türkiye'nin özellikle İstanbul, Ankara ve çevre illerinde bilişim sektöründeki istihdamın analizini yaparak, hangi meslek gruplarının en çok rağbet gördüğünü inceleyeceğiz.
+
+    ### Pandemi Sonrası İstihdam Dinamikleri
+
+    Pandemi sürecinde uzaktan çalışma modeline hızlı bir geçiş yaşandı. Ancak pandemi sonrası dönemde, şirketlerin hibrit çalışma modellerini benimsemesiyle birlikte çalışanlar tekrar iş yerlerine dönmeye başladı. Bu dönüş, bilişim sektöründe istihdam dinamiklerini önemli ölçüde etkiledi. Türkiye'nin başkenti Ankara ve en büyük şehri İstanbul, bilişim sektöründe iş ilanlarının yoğunlaştığı bölgeler olarak dikkat çekmektedir. Bu şehirler, büyük teknolojik şirketlerin merkezlerine ev sahipliği yapmakta ve bu nedenle iş fırsatlarının bol olduğu yerlerdir. 
+
+    ### İstanbul ve Ankara'daki İstihdam Fırsatları
+
+    İstanbul ve Ankara, Türkiye'nin teknoloji ve inovasyon merkezleri olarak öne çıkmaktadır. Bu şehirlerdeki bilişim sektörü, geniş bir yelpazede iş imkanları sunmaktadır. Aşağıdaki meslek grupları, pandemi sonrası dönemde en çok rağbet gören pozisyonlar arasında yer almaktadır:
+
+    1. Yazılım Mühendisi
+    2. Gömülü Yazılım Mühendisi
+    3. Yazılım Geliştirme Uzmanı
+    4. Yazılım Uzmanı
+    5. Bilgi Teknolojileri Uzman Yardımcısı
+    6. Yazılım Destek Uzmanı
+    7. İş Geliştirme Uzmanı
+    8. İş Analisti
+    9. ERP Uzmanı
+    10. Proje Yöneticisi / Yönetmeni
+
+    ### Meslek Gruplarının Detaylı Analizi
+
+    #### Yazılım Mühendisi ve Yazılım Uzmanı
+
+    Yazılım mühendisleri ve yazılım uzmanları, bilişim sektörünün belkemiğini oluşturan pozisyonlardır. Bu uzmanlar, çeşitli yazılım çözümleri geliştirir, mevcut sistemleri iyileştirir ve yeni teknolojileri entegre ederler. Pandemi sonrasında artan dijitalleşme talebi, yazılım mühendislerine olan ihtiyacı artırmıştır.
+
+    #### İş Geliştirme Uzmanı ve İş Analisti
+
+    İş geliştirme uzmanları ve iş analistleri, iş süreçlerini iyileştirmek ve şirket stratejilerini geliştirmek için çalışırlar. Pandemi sonrası dönemde, şirketlerin rekabet gücünü artırmak için bu uzmanlara olan talep artmıştır.
+
+    #### ERP Uzmanı ve Proje Yöneticisi / Yönetmeni
+
+    ERP uzmanları, şirketlerin iş süreçlerini yöneten ve optimize eden sistemlerin kurulumu ve bakımından sorumludur. Proje yöneticileri / yönetmenleri ise büyük ölçekli dijital dönüşüm projelerini yönetirler. Bu pozisyonlar, pandemi sonrası dönemde işletmelerin verimliliğini artırmak için kritik öneme sahiptir.
+
+    ### Sonuç
+
+    Türkiye'de bilişim sektöründeki istihdam, pandemi sonrası dönemde önemli değişiklikler yaşamaktadır. Ankara ve İstanbul gibi büyük şehirlerde, yazılım mühendisleri, iş analistleri, proje yöneticileri ve ERP uzmanları gibi pozisyonlara olan talep artmaktadır. Bu süreçte, bilişim sektöründeki iş arayanlar için çeşitli fırsatlar bulunmaktadır.
+    </div>
     ''', unsafe_allow_html=True)
 
 # Makale 2
 if st.button("Makale 2"):
     st.markdown('''
     ## Yapay Zeka ve İnsan Kaynakları: Geleceğin İş Gücü Yönetimi
-    ...
+
+    ### Giriş
+
+    Yapay zeka (YZ), son yıllarda iş dünyasında büyük bir devrim yaratmıştır. Özellikle insan kaynakları yönetimi gibi alanlarda, YZ'nin kullanımı iş süreçlerini optimize etmekte ve verimliliği artırmaktadır. Bu makalede, yapay zeka destekli insan kaynakları yönetiminin önemi ve gelecekte iş gücü yönetimindeki rolü ele alınacaktır.
+
+    ### Yapay Zeka Destekli İK Yönetimi
+
+    Geleneksel insan kaynakları yönetimi süreçleri, genellikle zaman alıcı ve tekrarlı işleri içerir. Mülakatlar, iş ilanlarının yayınlanması, CV taraması ve performans değerlendirmeleri gibi işlemler, insan kaynakları departmanlarının önemli bir zamanını alır. Yapay zeka, bu süreçleri otomatikleştirerek ve veri odaklı kararlar alınmasını sağlayarak iş gücü yönetiminde devrim yaratmaktadır.
+
+    ### Geleceğin İK Trendleri
+
+    Yapay zeka destekli İK yönetimi, geleceğin iş dünyasında önemli bir trend haline gelmektedir. Bu trendin ana unsurlarından biri, işe alım süreçlerinde yapay zeka tabanlı analitik araçların kullanılmasıdır. Bu araçlar, adayların yeteneklerini, deneyimlerini ve uygunluğunu değerlendirmek için büyük veri analizini kullanır. Böylece, işe alım süreçleri daha objektif ve verimli hale gelir.
+
+    ### İK Yönetiminde Yapay Zeka Etik Sorunları
+
+    Yapay zeka kullanımının artmasıyla birlikte, İK yönetiminde bazı etik sorunlar ortaya çıkmaktadır. Örneğin, yapay zeka algoritmalarının cinsiyet, yaş, ırk gibi öznelliklere dayalı olarak ayrımcılık yapma riski bulunmaktadır. Bu nedenle, yapay zeka destekli İK sistemlerinin geliştirilmesi ve uygulanması sırasında etik standartlara uyulması büyük önem taşır.
+
+    ### Sonuç
+
+    Yapay zeka, insan kaynakları yönetimi alanında büyük bir potansiyele sahiptir. Gelecekte, işe alım, performans yönetimi, eğitim ve gelişim gibi İK süreçlerinde yapay zeka tabanlı çözümlerin yaygınlaşması beklenmektedir. Ancak, bu teknolojinin etik ve güvenlik sorunları da dikkate alınmalı ve uygun önlemler alınmalıdır.
+    </div>
     ''', unsafe_allow_html=True)
