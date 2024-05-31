@@ -1,5 +1,4 @@
 import streamlit as st
-import numpy as np
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 
@@ -206,3 +205,46 @@ if st.button("Hakkımızda"):
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import requests
+import io
+
+# Veri setinin GitHub raw URL'si
+url = 'https://github.com/esrasenakaraaslan/web_sitesi/raw/main/tm_veriler.xlsx'
+
+# Veri setini indirin
+response = requests.get(url)
+data = response.content
+
+# Veri setini bir pandas DataFrame'e yükleyin
+is_ilanlari = pd.read_excel(io.BytesIO(data))
+
+# Konum sayıları analizi
+konum_sayilari = is_ilanlari['Konum'].value_counts()
+
+# Yüzde 5'ten az olanları filtreleme
+filtre = konum_sayilari / len(is_ilanlari) * 100 < 5
+filtrelenmis_konum_sayilari = konum_sayilari[~filtre]
+
+# Grafik oluşturma
+plt.figure(figsize=(10, 6))
+sns.barplot(x=filtrelenmis_konum_sayilari.index, y=filtrelenmis_konum_sayilari.values, palette="viridis")
+plt.title('Konumların Sayısı (Yüzde 5\'ten fazla olanlar)')
+plt.xlabel('Konumlar')
+plt.ylabel('Sayı')
+plt.xticks(rotation=90)
+plt.tight_layout()  # Grafik ögelerinin sıkışmasını önler
+
+# Streamlit başlığı ve açıklaması
+st.title('İş İlanları Analizi')
+st.write("""
+### Konum Analizi
+Bu grafik, yüzde 5'ten fazla olan iş ilanlarının konumlarını göstermektedir.
+""")
+
+# Grafik çizdirme
+st.pyplot(plt)
+
