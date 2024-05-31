@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import requests
+from io import BytesIO
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -61,10 +63,15 @@ st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsaf
 
 # GitHub'dan Excel dosyasını yükleme
 excel_url = 'https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/tm_veriler.xlsx'
-df = pd.read_excel(excel_url)
 
-# Veri Görselleştirme
-st.dataframe(df)
+try:
+    response = requests.get(excel_url)
+    response.raise_for_status()  # HTTP hatalarını kontrol et
+    excel_data = BytesIO(response.content)
+    df = pd.read_excel(excel_data)
+    st.dataframe(df)
+except requests.exceptions.RequestException as e:
+    st.error(f"Dosya indirilirken bir hata oluştu: {e}")
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -144,15 +151,43 @@ if st.button("Makale 1"):
 
     #### İş Geliştirme Uzmanı ve İş Analisti
 
-    İş geliştirme uzmanları ve iş analistleri, şirketlerin stratejik hedeflerine ulaşmalarına yardımcı olan önemli pozisyonlardır. Bu uzmanlar, yeni iş fırsatlarını değerlendirir, pazar analizleri yapar ve stratejik planlar geliştirirler. Pandemi sonrası dönemde şirketlerin rekabet avantajı elde etmesi için bu pozisyonlara olan talep artmıştır.
+    İş geliştirme uzmanları ve
+    # İş Geliştirme Uzmanı ve İş Analisti
+    iş geliştirme uzmanları ve iş analistleri, iş süreçlerini iyileştirmek ve şirket stratejilerini geliştirmek için çalışırlar. Pandemi sonrası dönemde, şirketlerin rekabet gücünü artırmak için bu uzmanlara olan talep artmıştır.
 
     #### ERP Uzmanı ve Proje Yöneticisi / Yönetmeni
 
-    ERP uzmanları ve proje yöneticileri, büyük ölçekli projelerin yönetimi ve koordinasyonunda kritik rol oynar. ERP sistemlerinin entegrasyonu ve büyük projelerin başarıyla tamamlanması için bu pozisyonlar vazgeçilmezdir. Pandemi sonrası dönemde şirketlerin dijital dönüşüm projelerine hız vermesi, bu uzmanlara olan ihtiyacı artırmıştır.
+    ERP uzmanları, şirketlerin iş süreçlerini yöneten ve optimize eden sistemlerin kurulumu ve bakımından sorumludur. Proje yöneticileri / yönetmenleri ise büyük ölçekli dijital dönüşüm projelerini yönetirler. Bu pozisyonlar, pandemi sonrası dönemde işletmelerin verimliliğini artırmak için kritik öneme sahiptir.
 
     ### Sonuç
 
-    Pandemi sonrasında bilişim sektöründe iş ilanlarının dağılımı, dijitalleşme sürecinin hızlanmasıyla birlikte değişiklik göstermiştir. İstanbul ve Ankara gibi büyük şehirlerdeki bilişim sektörü, geniş iş fırsatları sunarak Türkiye'nin teknoloji alanında büyümesine katkı sağlamaktadır. Yazılım mühendisleri, gömülü yazılım mühendisleri, yazılım geliştirme uzmanları ve diğer bilişim profesyonelleri, bu dönemde en çok aranan pozisyonlar arasında yer almaktadır. Şirketlerin dijital dönüşüm stratejilerini başarıyla uygulayabilmesi için bu uzmanlara olan talep artmaya devam edecektir.
+    Türkiye'de bilişim sektöründeki istihdam, pandemi sonrası dönemde önemli değişiklikler yaşamaktadır. Ankara ve İstanbul gibi büyük şehirlerde, yazılım mühendisleri, iş analistleri, proje yöneticileri ve ERP uzmanları gibi pozisyonlara olan talep artmaktadır. Bu süreçte, bilişim sektöründeki iş arayanlar için çeşitli fırsatlar bulunmaktadır.
+    </div>
+    ''', unsafe_allow_html=True)
 
-    ---
-    ''')
+# Makale 2
+if st.button("Makale 2"):
+    st.markdown('''
+    ## Yapay Zeka ve İnsan Kaynakları: Geleceğin İş Gücü Yönetimi
+
+    ### Giriş
+
+    Yapay zeka (YZ), son yıllarda iş dünyasında büyük bir devrim yaratmıştır. Özellikle insan kaynakları yönetimi gibi alanlarda, YZ'nin kullanımı iş süreçlerini optimize etmekte ve verimliliği artırmaktadır. Bu makalede, yapay zeka destekli insan kaynakları yönetiminin önemi ve gelecekte iş gücü yönetimindeki rolü ele alınacaktır.
+
+    ### Yapay Zeka Destekli İK Yönetimi
+
+    Geleneksel insan kaynakları yönetimi süreçleri, genellikle zaman alıcı ve tekrarlı işleri içerir. Mülakatlar, iş ilanlarının yayınlanması, CV taraması ve performans değerlendirmeleri gibi işlemler, insan kaynakları departmanlarının önemli bir zamanını alır. Yapay zeka, bu süreçleri otomatikleştirerek ve veri odaklı kararlar alınmasını sağlayarak iş gücü yönetiminde devrim yaratmaktadır.
+
+    ### Geleceğin İK Trendleri
+
+    Yapay zeka destekli İK yönetimi, geleceğin iş dünyasında önemli bir trend haline gelmektedir. Bu trendin ana unsurlarından biri, işe alım süreçlerinde yapay zeka tabanlı analitik araçların kullanılmasıdır. Bu araçlar, adayların yeteneklerini, deneyimlerini ve uygunluğunu değerlendirmek için büyük veri analizini kullanır. Böylece, işe alım süreçleri daha objektif ve verimli hale gelir.
+
+    ### İK Yönetiminde Yapay Zeka Etik Sorunları
+
+    Yapay zeka kullanımının artmasıyla birlikte, İK yönetiminde bazı etik sorunlar ortaya çıkmaktadır. Örneğin, yapay zeka algoritmalarının cinsiyet, yaş, ırk gibi öznelliklere dayalı olarak ayrımcılık yapma riski bulunmaktadır. Bu nedenle, yapay zeka destekli İK sistemlerinin geliştirilmesi ve uygulanması sırasında etik standartlara uyulması büyük önem taşır.
+
+    ### Sonuç
+
+    Yapay zeka, insan kaynakları yönetimi alanında büyük bir potansiyele sahiptir. Gelecekte, işe alım, performans yönetimi, eğitim ve gelişim gibi İK süreçlerinde yapay zeka tabanlı çözümlerin yaygınlaşması beklenmektedir. Ancak, bu teknolojinin etik ve güvenlik sorunları da dikkate alınmalı ve uygun önlemler alınmalıdır.
+    </div>
+    ''', unsafe_allow_html=True)
