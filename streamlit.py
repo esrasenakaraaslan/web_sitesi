@@ -61,18 +61,6 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# GitHub'dan Excel dosyasını yükleme
-excel_url = 'https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/tm_veriler.xlsx'
-
-try:
-    response = requests.get(excel_url)
-    response.raise_for_status()  # HTTP hatalarını kontrol et
-    excel_data = BytesIO(response.content)
-    df = pd.read_excel(excel_data)
-    st.dataframe(df)
-except requests.exceptions.RequestException as e:
-    st.error(f"Dosya indirilirken bir hata oluştu: {e}")
-
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
 
