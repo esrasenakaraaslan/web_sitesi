@@ -1,14 +1,3 @@
-import subprocess
-import sys
-
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-try:
-    import openpyxl
-except ImportError:
-    install('openpyxl')
-
 import streamlit as st
 import pandas as pd
 import requests
@@ -110,7 +99,33 @@ if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Görsel ekleme
+st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 
 st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+
+# Makaleler bölümü
+st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
+
+# Makale 1
+if st.button("Makale 1"):
+    st.markdown('''
+    ## Bilişim Sektöründeki İstihdam Analizi
+
+    ### Giriş
+
+    Bilişim sektörü, teknolojik gelişmelerin hız kesmeden devam ettiği günümüz dünyasında ekonomik büyümenin itici güçlerinden biri haline gelmiştir. Özellikle pandemi süreci, dijitalleşmenin ve uzaktan çalışmanın önemini artırmış ve bilişim sektörüne olan talebi daha da yükseltmiştir. Bu makalede, pandemi sonrasında Türkiye'nin özellikle İstanbul, Ankara ve çevre illerinde bilişim sektöründeki istihdamın analizini yaparak, hangi meslek gruplarının en çok rağbet gördüğünü inceleyeceğiz.
+
+    ''', unsafe_allow_html=True)
+
+# Makale 2
+if st.button("Makale 2"):
+    st.markdown('''
+    ## Yapay Zeka ve İnsan Kaynakları: Geleceğin İş Gücü Yönetimi
+
+    ### Giriş
+
+    Yapay zeka (YZ), son yıllarda iş dünyasında büyük bir devrim yaratmıştır. Özellikle insan kaynakları yönetimi gibi alanlarda, YZ'nin kullanımı iş süreçlerini optimize etmekte ve verimliliği artırmaktadır. Bu makalede, yapay zeka destekli insan kaynakları yönetiminin önemi ve gelecekte iş gücü yönetimindeki rolü ele alınacaktır.
+
+    ''', unsafe_allow_html=True)
