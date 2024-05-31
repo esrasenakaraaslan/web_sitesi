@@ -59,28 +59,28 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# GitHub'dan Excel dosyasını yükleme
-excel_url = 'https://github.com/esrasenakaraaslan/web_sitesi/raw/main/tm_veriler.xlsx'
-
 # Dosya yükleme
-try:
-    df = pd.read_excel(excel_url)
+uploaded_file = st.file_uploader("Excel dosyasını yükleyin", type=["xlsx", "xls"])
 
-    # Arama ve filtreleme
-    search = st.text_input('İş başlığına göre ara')
-    location_filter = st.selectbox('Konuma göre filtrele', ['Hepsi'] + df['Konum'].unique().tolist())
+if uploaded_file is not None:
+    try:
+        df = pd.read_excel(uploaded_file)
 
-    filtered_df = df
+        # Arama ve filtreleme
+        search = st.text_input('İş başlığına göre ara')
+        location_filter = st.selectbox('Konuma göre filtrele', ['Hepsi'] + df['Konum'].unique().tolist())
 
-    if search:
-        filtered_df = filtered_df[filtered_df['Başlık'].str.contains(search, case=False)]
+        filtered_df = df
 
-    if location_filter != 'Hepsi':
-        filtered_df = filtered_df[filtered_df['Konum'] == location_filter]
+        if search:
+            filtered_df = filtered_df[filtered_df['Başlık'].str.contains(search, case=False)]
 
-    st.dataframe(filtered_df)
-except Exception as e:
-    st.error(f"Excel dosyası yüklenirken bir hata oluştu: {e}")
+        if location_filter != 'Hepsi':
+            filtered_df = filtered_df[filtered_df['Konum'] == location_filter]
+
+        st.dataframe(filtered_df)
+    except Exception as e:
+        st.error(f"Excel dosyası yüklenirken bir hata oluştu: {e}")
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
