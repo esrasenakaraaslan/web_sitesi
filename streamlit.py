@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import os
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -60,12 +59,12 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# Excel dosyasının doğru yolu
-excel_file_path = 'path_to_your_excel_file.xlsx'  # Excel dosyanızın yolu
+# GitHub'dan Excel dosyasını yükleme
+excel_url = 'https://github.com/esrasenakaraaslan/web_sitesi/raw/main/tm_veriler.xlsx'
 
-# Dosya var mı kontrolü ve yükleme
-if os.path.exists(excel_file_path):
-    df = pd.read_excel(excel_file_path)
+# Dosya yükleme
+try:
+    df = pd.read_excel(excel_url)
 
     # Arama ve filtreleme
     search = st.text_input('İş başlığına göre ara')
@@ -80,8 +79,8 @@ if os.path.exists(excel_file_path):
         filtered_df = filtered_df[filtered_df['Konum'] == location_filter]
 
     st.dataframe(filtered_df)
-else:
-    st.error("Excel dosyası bulunamadı. Lütfen dosya yolunu kontrol edin.")
+except Exception as e:
+    st.error(f"Excel dosyası yüklenirken bir hata oluştu: {e}")
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
