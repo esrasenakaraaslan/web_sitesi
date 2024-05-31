@@ -211,6 +211,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import requests
 import io
+import web
 
 # Veri setinin GitHub raw URL'si
 url = 'https://github.com/esrasenakaraaslan/web_sitesi/raw/main/tm_veriler.xlsx'
