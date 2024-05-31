@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import requests
-from io import BytesIO
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -61,17 +59,12 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# GitHub'dan Excel dosyasını yükleme
-excel_url = 'https://github.com/esrasenakaraaslan/datasetim/blob/main/t%C3%BCm_veriler_doldurulmus.xlsx'
-
+# Projeye dahil edilmiş Excel dosyasını yükleme
 try:
-    response = requests.get(excel_url)
-    response.raise_for_status()  # HTTP hatalarını kontrol et
-    excel_data = BytesIO(response.content)
-    df = pd.read_excel(excel_data)
+    df = pd.read_excel('tüm_veriler_doldurulmus(6).xlsx')
     st.dataframe(df)
-except requests.exceptions.RequestException as e:
-    st.error(f"Dosya indirilirken bir hata oluştu: {e}")
+except Exception as e:
+    st.error(f"Dosya yüklenirken bir hata oluştu: {e}")
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -102,7 +95,8 @@ with col3:
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
 # İşveren Girişi butonu
-st.button("İşveren Girişi", key="isveren_girisi_button")
+if st.button("İşveren Girişi", key="isveren_girisi_button"):
+    st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Görsel ekleme
 st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
