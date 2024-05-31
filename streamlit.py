@@ -1,5 +1,5 @@
 import streamlit as st
-
+import numpy as np
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 
