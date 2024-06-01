@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import LabelEncoder
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -59,12 +61,13 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# Projeye dahil edilmiş Excel dosyasını yükleme
-try:
-    df = pd.read_excel('tüm_veriler_doldurulmus.xlsx')
-    st.dataframe(df)
-except Exception as e:
-    st.error(f"Dosya yüklenirken bir hata oluştu: {e}")
+url = "https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
+
+@st.cache_data
+def load_data(url):
+    return pd.read_excel(url)
+
+data = load_data(url)
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -91,15 +94,31 @@ with col3:
     if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
         st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
 
-# Ek bir buton ve bilgi kutusu
-st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
+# Yeni butonlar ve işlevler
+if st.button("Hakkımızda"):
+    st.markdown('<div class="info-box"><p>FreshData, iş arayanlar ve işverenler için yenilikçi çözümler sunan bir platformdur.</p></div>', unsafe_allow_html=True)
 
-# İşveren Girişi butonu
-if st.button("İşveren Girişi", key="isveren_girisi_button"):
-    st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
+if st.button("Grafikler"):
+    st.markdown('<div class="info-box"><p>Veri setinden elde edilen grafikler burada gösterilecektir.</p></div>', unsafe_allow_html=True)
+    
+    # Grafikler için butonlar
+    if st.button("Konum Grafiği"):
+        le_konum = LabelEncoder()
+        konum_encoded = le_konum.fit_transform(data['Konum'])
 
-# Görsel ekleme
-st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
+        fig, ax = plt.subplots()
+        pd.Series(konum_encoded).value_counts().sort_index().plot(kind='bar', ax=ax)
+        ax.set_xticklabels(le_konum.inverse_transform(range(len(le_konum.classes_))), rotation=90)
+        st.pyplot(fig)
+
+    if st.button("Pozisyon Grafiği"):
+        le_pozisyon = LabelEncoder()
+        pozisyon_encoded = le_pozisyon.fit_transform(data['Pozisyon'])
+
+        fig, ax = plt.subplots()
+        pd.Series(pozisyon_encoded).value_counts().sort_index().plot(kind='bar', ax=ax)
+        ax.set_xticklabels(le_pozisyon.inverse_transform(range(len(le_pozisyon.classes_))), rotation=90)
+        st.pyplot(fig)
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
