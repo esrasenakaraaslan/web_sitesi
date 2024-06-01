@@ -1,7 +1,5 @@
-import pandas as pd
 import streamlit as st
-from sklearn.preprocessing import LabelEncoder
-from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -61,22 +59,12 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-url = "https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
-
-@st.cache_data
-def load_data(url):
-    return pd.read_excel(url)
-
-data = load_data(url)
-
-# Kategorik verileri sayısal verilere dönüştürün
-le_konum = LabelEncoder()
-le_pozisyon = LabelEncoder()
-le_calismasekli = LabelEncoder()
-
-data['Konum'] = le_konum.fit_transform(data['Konum'])
-data['Pozisyon'] = le_pozisyon.fit_transform(data['Pozisyon'])
-data['çalışma şekli'] = le_calismasekli.fit_transform(data['çalışma şekli'])
+# Projeye dahil edilmiş Excel dosyasını yükleme
+try:
+    df = pd.read_excel('tüm_veriler_doldurulmus.xlsx')
+    st.dataframe(df)
+except Exception as e:
+    st.error(f"Dosya yüklenirken bir hata oluştu: {e}")
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -84,10 +72,16 @@ col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("İş Bul", key="iş_bul_button"):
         st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
-        
+
         # İş Bul butonunun altındaki butonlar
-        konum_secim = st.selectbox("Konum Seçin", le_konum.classes_)
-        pozisyon_secim = st.selectbox("Pozisyon Seçin", le_pozisyon.classes_)
+        if st.button("Konum", key="konum_button"):
+            st.markdown('<div class="info-box"><p>Konuma göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
+
+        if st.button("Pozisyon", key="pozisyon_button"):
+            st.markdown('<div class="info-box"><p>Pozisyona göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
+
+        if st.button("Çalışma Şekli", key="calisma_sekli_button"):
+            st.markdown('<div class="info-box"><p>Çalışma şekline göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 with col2:
     if st.button("Meslek Grupları", key="meslek_grupları_button"):
