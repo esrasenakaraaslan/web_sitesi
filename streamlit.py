@@ -1,5 +1,5 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 
@@ -61,16 +61,15 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-url ="https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
+url = "https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
 
-@st.cache
+@st.cache_data
 def load_data(url):
-    return pd.read_csv(url)
+    return pd.read_excel(url)
 
-# Veriyi yükle
 data = load_data(url)
 
-# Kategorik verileri sayısal verilere dönüştür
+# Kategorik verileri sayısal verilere dönüştürün
 le_konum = LabelEncoder()
 le_pozisyon = LabelEncoder()
 le_calismasekli = LabelEncoder()
@@ -79,28 +78,16 @@ data['Konum'] = le_konum.fit_transform(data['Konum'])
 data['Pozisyon'] = le_pozisyon.fit_transform(data['Pozisyon'])
 data['çalışma şekli'] = le_calismasekli.fit_transform(data['çalışma şekli'])
 
-# İş Bulma Fonksiyonu
-def find_job(meslek):
-    meslek_kodu = le_pozisyon.transform([meslek])[0]
-    meslek_data = data[data['Pozisyon'] == meslek_kodu]
-    X = meslek_data[['Konum', 'çalışma şekli']]
-    y = meslek_data['Konum']
-    model = RandomForestClassifier(random_state=42)
-    model.fit(X, y)
-    city_probabilities = pd.DataFrame(model.predict_proba(X), columns=le_konum.inverse_transform(model.classes_))
-    top_cities = city_probabilities.mean().sort_values(ascending=False).head(10)
-    return top_cities
-
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
 
 with col1:
     if st.button("İş Bul", key="iş_bul_button"):
-        meslek = st.text_input("Hangi meslek için şehirlerdeki bulma olasılıklarını görmek istersiniz?")
-        if meslek:
-            result = find_job(meslek)
-            st.write(f"{meslek} mesleği için en çok bulunan 10 şehir ve bulma olasılıkları:")
-            st.write(result)
+        st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
+        
+        # İş Bul butonunun altındaki butonlar
+        konum_secim = st.selectbox("Konum Seçin", le_konum.classes_)
+        pozisyon_secim = st.selectbox("Pozisyon Seçin", le_pozisyon.classes_)
 
 with col2:
     if st.button("Meslek Grupları", key="meslek_grupları_button"):
