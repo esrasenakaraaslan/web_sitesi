@@ -63,7 +63,7 @@ st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsaf
 
 url = "https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
 
-@st.cache
+@st.cache_data
 def load_data(url):
     return pd.read_excel(url)
 
@@ -88,31 +88,6 @@ with col1:
         # İş Bul butonunun altındaki butonlar
         konum_secim = st.selectbox("Konum Seçin", le_konum.classes_)
         pozisyon_secim = st.selectbox("Pozisyon Seçin", le_pozisyon.classes_)
-        calisma_sekli_secim = st.selectbox("Çalışma Şeklini Seçin", le_calismasekli.classes_)
-        
-        if st.button("Sonuçları Getir", key="sonuclari_getir_button"):
-            st.markdown('<div class="info-box"><p>Sonuçlar getiriliyor...</p></div>', unsafe_allow_html=True)
-            
-            # Seçilen pozisyonun kodunu al
-            meslek_kodu = le_pozisyon.transform([pozisyon_secim])[0]
-
-            # Meslek koduna göre veriyi filtrele
-            meslek_data = data[data['Pozisyon'] == meslek_kodu]
-
-            # Şehirlerdeki bulma olasılıklarını hesaplayın
-            X = meslek_data[['Konum', 'çalışma şekli']]
-            y = meslek_data['Konum']
-
-            model = RandomForestClassifier(random_state=42)
-            model.fit(X, y)
-
-            city_probabilities = pd.DataFrame(model.predict_proba(X), columns=le_konum.inverse_transform(model.classes_))
-
-            # Şehirlerdeki bulma olasılıklarını sıralayın
-            top_cities = city_probabilities.mean().sort_values(ascending=False).head(10)
-
-            st.write(f"{pozisyon_secim} mesleği için en çok bulunan 10 şehir ve bulma olasılıkları:\n")
-            st.write(top_cities)
 
 with col2:
     if st.button("Meslek Grupları", key="meslek_grupları_button"):
@@ -151,5 +126,3 @@ if st.button("Makale 2"):
     ## Yapay Zeka ve İnsan Kaynakları: Geleceğin İş Gücü Yönetimi
     ...
     ''', unsafe_allow_html=True)
-
-
