@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
