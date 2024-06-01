@@ -1,3 +1,4 @@
 pandas
 streamlit
-pip install scikit-learn
+scikit-learn
+matplotlib
