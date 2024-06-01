@@ -89,35 +89,4 @@ with col2:
         st.markdown('<div class="info-box"><p>Burada meslek gruplarına göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 with col3:
-    if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
-        st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
-
-# Ek bir buton ve bilgi kutusu
-st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
-
-# İşveren Girişi butonu
-if st.button("İşveren Girişi", key="isveren_girisi_button"):
-    st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-# Görsel ekleme
-st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
-
-# Footer
-st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
-
-# Makaleler bölümü
-st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
-
-# Makale 1
-if st.button("Makale 1"):
-    st.markdown('''
-    ## Bilişim Sektöründeki İstihdam Analizi
-    ...
-    ''', unsafe_allow_html=True)
-
-# Makale 2
-if st.button("Makale 2"):
-    st.markdown('''
-    ## Yapay Zeka ve İnsan Kaynakları: Geleceğin İş Gücü Yönetimi
-    ...
-    ''', unsafe_allow_html=True)
+    if st.button("Türkiye'nin
