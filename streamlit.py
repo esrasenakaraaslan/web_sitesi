@@ -58,14 +58,28 @@ st.markdown(
 
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
+url = "https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
+@st.cache_data
+def load_data(url):
+    return pd.read_excel(url)
 
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    if st.button("İş Bul", key="iş_bul_button"):
-        st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
+   data = load_data(url)
+
+# İş Bul butonunu ekleyin
+if st.button("İş Bul", key="iş_bul_button"):
+    st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
+
+# Konumlar butonunu ekleyin
+if st.button("Konumlar", key="konumlar_button"):
+    # Verideki 'Konum' sütunundaki unique değerleri alın
+    konumlar = data['Konum'].unique()
+    # Konumları görüntüleyin
+    st.write(konumlar)
 
 with col2:
     if st.button("Meslek Grupları", key="meslek_grupları_button"):
