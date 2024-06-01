@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import LabelEncoder
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -103,22 +101,12 @@ if st.button("Grafikler"):
     
     # Grafikler için butonlar
     if st.button("Konum Grafiği"):
-        le_konum = LabelEncoder()
-        konum_encoded = le_konum.fit_transform(data['Konum'])
-
-        fig, ax = plt.subplots()
-        pd.Series(konum_encoded).value_counts().sort_index().plot(kind='bar', ax=ax)
-        ax.set_xticklabels(le_konum.inverse_transform(range(len(le_konum.classes_))), rotation=90)
-        st.pyplot(fig)
+        konum_counts = data['Konum'].value_counts()
+        st.bar_chart(konum_counts)
 
     if st.button("Pozisyon Grafiği"):
-        le_pozisyon = LabelEncoder()
-        pozisyon_encoded = le_pozisyon.fit_transform(data['Pozisyon'])
-
-        fig, ax = plt.subplots()
-        pd.Series(pozisyon_encoded).value_counts().sort_index().plot(kind='bar', ax=ax)
-        ax.set_xticklabels(le_pozisyon.inverse_transform(range(len(le_pozisyon.classes_))), rotation=90)
-        st.pyplot(fig)
+        pozisyon_counts = data['Pozisyon'].value_counts()
+        st.bar_chart(pozisyon_counts)
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
