@@ -59,12 +59,11 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# Projeye dahil edilmiş Excel dosyasını yükleme
-try:
-    df = pd.read_excel('tüm_veriler_doldurulmus(6).xlsx')
-    st.dataframe(df)
-except Exception as e:
-    st.error(f"Dosya yüklenirken bir hata oluştu: {e}")
+url ="https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
+
+@st.cache
+def load_data(url):
+    return pd.read_csv(url)
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
