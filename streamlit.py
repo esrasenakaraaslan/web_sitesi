@@ -92,21 +92,15 @@ with col3:
     if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
         st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
 
-# Yeni butonlar ve işlevler
-if st.button("Hakkımızda"):
-    st.markdown('<div class="info-box"><p>FreshData, iş arayanlar ve işverenler için yenilikçi çözümler sunan bir platformdur.</p></div>', unsafe_allow_html=True)
+# Ek bir buton ve bilgi kutusu
+st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
-if st.button("Grafikler"):
-    st.markdown('<div class="info-box"><p>Veri setinden elde edilen grafikler burada gösterilecektir.</p></div>', unsafe_allow_html=True)
-    
-    # Grafikler için butonlar
-    if st.button("Konum Grafiği"):
-        konum_counts = data['Konum'].value_counts()
-        st.bar_chart(konum_counts)
+# İşveren Girişi butonu
+if st.button("İşveren Girişi", key="isveren_girisi_button"):
+    st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-    if st.button("Pozisyon Grafiği"):
-        pozisyon_counts = data['Pozisyon'].value_counts()
-        st.bar_chart(pozisyon_counts)
+# Görsel ekleme
+st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
