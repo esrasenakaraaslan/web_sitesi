@@ -1,3 +1,4 @@
+
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -11,7 +12,10 @@ st.markdown(
     """
     <style>
     body {
-        background-color: #f0f2f6;
+        background-image: url('https://resimlink.com/fng7xTi5Ec');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
     .stButton>button {
         color: white;
@@ -81,6 +85,7 @@ with col2:
 with col3:
     if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
         st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
+
 # İş İlanları Grafikleri bölümü
 if st.button("İş İlanları Grafikleri"):
     is_ilanlari = load_data(url)
@@ -96,6 +101,7 @@ if st.button("İş İlanları Grafikleri"):
     plt.ylabel('Sayı')
     plt.xticks(rotation=90)
     st.pyplot(plt)
+
 # Ek bir buton ve bilgi kutusu
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
@@ -137,4 +143,5 @@ if st.button("Hakkımızda"):
     
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+
 
