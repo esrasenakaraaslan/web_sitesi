@@ -81,7 +81,21 @@ with col2:
 with col3:
     if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
         st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
-
+# İş İlanları Grafikleri bölümü
+if st.button("İş İlanları Grafikleri"):
+    is_ilanlari = load_data(url)
+    konum_sayilari = is_ilanlari['Konum'].value_counts()
+    
+    filtre = konum_sayilari / len(is_ilanlari) * 100 < 5
+    filtrelenmis_konum_sayilari = konum_sayilari[~filtre]
+    
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x=filtrelenmis_konum_sayilari.index, y=filtrelenmis_konum_sayilari.values, palette="viridis")
+    plt.title('Konumların Sayısı (Yüzde 5\'ten fazla olanlar)')
+    plt.xlabel('Konumlar')
+    plt.ylabel('Sayı')
+    plt.xticks(rotation=90)
+    st.pyplot(plt)
 # Ek bir buton ve bilgi kutusu
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
@@ -120,22 +134,6 @@ if st.button("Hakkımızda"):
 
     (Hakkımızda içeriği burada yer alacak)
     ''')
-
-# İş İlanları Grafikleri bölümü
-if st.button("İş İlanları Grafikleri"):
-    is_ilanlari = load_data(url)
-    konum_sayilari = is_ilanlari['Konum'].value_counts()
-    
-    filtre = konum_sayilari / len(is_ilanlari) * 100 < 5
-    filtrelenmis_konum_sayilari = konum_sayilari[~filtre]
-    
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x=filtrelenmis_konum_sayilari.index, y=filtrelenmis_konum_sayilari.values, palette="viridis")
-    plt.title('Konumların Sayısı (Yüzde 5\'ten fazla olanlar)')
-    plt.xlabel('Konumlar')
-    plt.ylabel('Sayı')
-    plt.xticks(rotation=90)
-    st.pyplot(plt)
     
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
