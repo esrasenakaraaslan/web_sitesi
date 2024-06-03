@@ -137,3 +137,4 @@ if st.button("Hakkımızda"):
     
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
+
