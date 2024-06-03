@@ -89,7 +89,7 @@ if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Görsel ekleme
-st.markdown('<img src="https://via.placeholder.com/800x200/FFC300/9b59b6?text=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
+st.markdown('<img src="https://www.canva.com/design/DAGHFGJb8ew/GEP0o9jvl6287o5yFy9qEA/edit?utm_content=DAGHFGJb8ew&utm_campaign=designshare&utm_medium=link2&utm_source=sharebuttontext=FreshData+İş+İlanı+Sitesi" style="width:100%; border-radius: 10px;">', unsafe_allow_html=True)
 
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
