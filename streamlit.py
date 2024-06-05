@@ -23,7 +23,7 @@ st.markdown(
         background-color: #aed6f1; /* Arka plan rengi */
     }
     .stButton>button {
-        color: #000000; /* Buton içindeki yazı rengi (siyah) */
+        color: #f4d03f; /* Buton içindeki yazı rengi (sarı) */
         background-color: #9b59b6; /* Buton rengi (mor) */
     }
     </style>
