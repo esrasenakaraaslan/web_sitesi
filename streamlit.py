@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -18,7 +20,7 @@ st.markdown(
     }
     .stButton>button {
         color: white;
-        background-color: #9b59b6; /* Mor renk */
+        background-color: #9b59b6;
         border: none;
         padding: 10px 24px;
         text-align: center;
@@ -31,16 +33,16 @@ st.markdown(
         transition-duration: 0.4s;
     }
     .stButton>button:hover {
-        background-color: #ec407a; /* Pembe renk */
+        background-color: #ec407a;
     }
     .header-title {
-        color: #9b59b6; /* Mor renk */
+        color: #9b59b6;
         font-family: 'Arial', sans-serif;
         text-align: center;
         margin-top: 20px;
     }
     .info-box {
-        background-color: #ec407a; /* Pembe renk */
+        background-color: #ec407a;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -64,10 +66,11 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-# CSV yükleme fonksiyonu
+url = "https://raw.githubusercontent.com/esrasenakaraaslan/web_sitesi/main/.devcontainer/t%C3%BCm_veriler_doldurulmus.xlsx"
+
 @st.cache_data
-def load_data(file):
-    return pd.read_csv(file)
+def load_data(url):
+    return pd.read_excel(url)
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
@@ -85,36 +88,20 @@ with col3:
         st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
 
 # İş İlanları Grafikleri bölümü
-uploaded_file = st.file_uploader("İş ilanları dosyasını yükleyin (CSV formatında)", type="csv")
-
-if uploaded_file is not None:
-    is_ilanlari = load_data(uploaded_file)
-    st.write(is_ilanlari)
+if st.button("İş İlanları Grafikleri"):
+    is_ilanlari = load_data(url)
+    konum_sayilari = is_ilanlari['Konum'].value_counts()
     
-    # Filtreleme özellikleri
-    st.sidebar.header("Filtreleme Seçenekleri")
-    konumlar = st.sidebar.multiselect("Konum Seçin", options=is_ilanlari["Konum"].unique(), default=is_ilanlari["Konum"].unique())
-    pozisyonlar = st.sidebar.multiselect("Pozisyon Seçin", options=is_ilanlari["Pozisyon"].unique(), default=is_ilanlari["Pozisyon"].unique())
+    filtre = konum_sayilari / len(is_ilanlari) * 100 < 5
+    filtrelenmis_konum_sayilari = konum_sayilari[~filtre]
     
-    # Veriyi filtrele
-    filtrelenmis_veri = is_ilanlari[(is_ilanlari["Konum"].isin(konumlar)) & (is_ilanlari["Pozisyon"].isin(pozisyonlar))]
-    
-    st.write(filtrelenmis_veri)
-
-    # Grafik
-    if st.button("İş İlanları Grafikleri"):
-        konum_sayilari = filtrelenmis_veri['Konum'].value_counts()
-        
-        filtre = konum_sayilari / len(filtrelenmis_veri) * 100 < 5
-        filtrelenmis_konum_sayilari = konum_sayilari[~filtre]
-        
-        plt.figure(figsize=(10, 6))
-        sns.barplot(x=filtrelenmis_konum_sayilari.index, y=filtrelenmis_konum_sayilari.values, palette="viridis")
-        plt.title('Konumların Sayısı (Yüzde 5\'ten fazla olanlar)')
-        plt.xlabel('Konumlar')
-        plt.ylabel('Sayı')
-        plt.xticks(rotation=90)
-        st.pyplot(plt)
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x=filtrelenmis_konum_sayilari.index, y=filtrelenmis_konum_sayilari.values, palette="viridis")
+    plt.title('Konumların Sayısı (Yüzde 5\'ten fazla olanlar)')
+    plt.xlabel('Konumlar')
+    plt.ylabel('Sayı')
+    plt.xticks(rotation=90)
+    st.pyplot(plt)
 
 # Ek bir buton ve bilgi kutusu
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
@@ -154,6 +141,6 @@ if st.button("Hakkımızda"):
 
     (Hakkımızda içeriği burada yer alacak)
     ''')
-
+    
 # Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
