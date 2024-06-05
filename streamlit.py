@@ -67,26 +67,24 @@ url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%B
 def load_data(url): 
     return pd.read_excel(url)
 
-    if st.button("İş Bul", key="iş_bul_button"):
-        st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
+# İşlev butonları ve içerikleri
+if st.button("İş Bul", key="iş_bul_button"):
+    st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-    if st.button("Meslek Grupları", key="meslek_grupları_button"):
-        st.markdown('<div class="info-box"><p>Burada meslek gruplarına göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
+if st.button("Meslek Grupları", key="meslek_grupları_button"):
+    st.markdown('<div class="info-box"><p>Burada meslek gruplarına göre iş arama işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-    if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
-        st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
+if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
+    st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
 
-    if st.button("Analiz"):
-        st.markdown('<div class="info-box"><p>Burada veri analizi işlevi gelecek.</p></div>', unsafe_allow_html=True)
+if st.button("Analiz"):
+    st.markdown('<div class="info-box"><p>Burada veri analizi işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-    if st.button("Grafikler"):
-        st.markdown('<div class="info-box"><p>Burada grafikler çizme işlevi gelecek.</p></div>', unsafe_allow_html=True)
-        
-    if st.button("İşveren Girişi", key="isveren_girisi_button"):
-        st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
-
-    if st.button("İşveren Girişi", key="isveren_girisi_button"):
-        st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
+if st.button("Grafikler"):
+    st.markdown('<div class="info-box"><p>Burada grafikler çizme işlevi gelecek.</p></div>', unsafe_allow_html=True)
+    
+if st.button("İşveren Girişi", key="isveren_girisi_button"):
+    st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Makaleler bölümü
 st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
@@ -105,5 +103,6 @@ if st.button("Hakkımızda"):
     ## Bilişim Sektöründe Gelecek: Veri Analizi ve İş İlanları
     ...
     ''')
-    # Footer
+
+# Footer
 st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
