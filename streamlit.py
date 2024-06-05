@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 
@@ -57,10 +58,16 @@ st.markdown(
 
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
-url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%BCm_veriler_d%C3%BCzenlenmi%C5%9F_y%C4%B1ll%C4%B1.xlsx" 
-@st.cache_data 
-def load_data(url): 
+
+url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%BCm_veriler_d%C3%BCzenlenmi%C5%9F_y%C4%B1ll%C4%B1.xlsx"
+
+@st.cache_data
+def load_data(url):
     return pd.read_excel(url)
+
+# Veriyi yükle
+data = load_data(url)
+
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
 
@@ -143,69 +150,4 @@ if st.button("Makale 1"):
 
     #### ERP Uzmanı
 
-    ERP (Kurumsal Kaynak Planlaması) uzmanları, şirketlerin operasyonel süreçlerini optimize eder ve verimliliği artırır. Pandemi sürecinde tedarik zincirlerinde yaşanan aksaklıklar, ERP çözümlerine olan ihtiyacı ve dolayısıyla bu alandaki uzmanlara olan talebi yükseltmiştir.
-
-    #### Proje Yöneticisi / Yönetmeni
-
-    Proje yöneticileri, projelerin zamanında ve bütçeye uygun bir şekilde tamamlanmasını sağlar. Pandemi sonrası dönemde dijital dönüşüm projelerinin artması, bu pozisyonlara olan talebi artırmıştır.
-
-    ### İstanbul ve Ankara Çevresindeki İstihdam Olanakları
-
-    İstanbul ve Ankara'nın yanı sıra bu şehirlere yakın illerde de bilişim sektöründe önemli istihdam olanakları bulunmaktadır. Bu bölgeler, büyük şehirlerdeki yoğun iş yükünü paylaşmakta ve geniş bir yetenek havuzuna erişim sağlamaktadır. Özellikle teknoloji geliştirme bölgeleri ve teknoparklar, bu alanlarda önemli iş fırsatları sunmaktadır.
-
-    ### Sonuç
-
-    Pandemi sonrası dönemde bilişim sektöründe istihdam dinamikleri önemli değişiklikler göstermiştir. İstanbul ve Ankara başta olmak üzere, bu şehirlerin çevresindeki illerde de bilişim sektöründe geniş iş imkanları bulunmaktadır. Yazılım mühendisleri, yazılım geliştirme uzmanları, ERP uzmanları ve proje yöneticileri gibi meslek grupları, en çok talep gören pozisyonlar arasında yer almaktadır. Bu makalede ele alınan analizler, bilişim sektöründeki istihdam olanaklarını ve pandemi sonrası dönemdeki değişimleri ortaya koymaktadır.
-
-    ### Kaynakça
-
-    * Türkiye İstatistik Kurumu (TÜİK) verileri
-    * İşkur iş ilanları ve istihdam raporları
-    * Bilişim sektörü analiz raporları
-    * Şirketlerin yayınladığı iş ilanları ve istihdam verileri
-
-    Bu makale, Türkiye'deki bilişim sektöründe istihdam dinamiklerini anlamak ve gelecekteki eğilimleri öngörmek için önemli bir kaynak sunmaktadır.
-    ''')
-
-# Makale 2
-if st.button("Makale 2"):
-    st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
-
-# Makale 3
-if st.button("Makale 3"):
-    st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 3</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
-
-# Hakkımızda bölümü
-if st.button("Hakkımızda"):
-    st.markdown('''
-    ## Bilişim Sektöründe Gelecek: Veri Analizi ve İş İlanları
-
-    ### Teknolojinin hızla gelişmesiyle birlikte, bilişim sektörü her geçen gün daha da önemli hale gelmektedir. Bu sektördeki değişim ve gelişim, hem iş arayanlar hem de işverenler için büyük fırsatlar ve zorluklar sunmaktadır. Veri analizi, bu alanda önemli bir rol oynamakta ve gelecekteki eğilimleri belirlemede kritik bir araç haline gelmektedir.
-
-    #### Bilişimde Kariyer Yolculuğu
-
-    Bilişim sektörü, hızla değişen ve gelişen bir alandır. Bu sektörde kariyer yapmak isteyenler için, doğru işi bulmak ve kendilerini sürekli olarak güncellemek önemlidir. Ancak, bilişim sektöründeki iş ilanlarını izlemek ve değerlendirmek karmaşık bir süreç olabilir.
-
-    #### Veri Analiziyle Geleceği Anlamak
-
-    Veri analizi, bilişim sektöründeki iş ilanlarını ve eğilimlerini anlamak için güçlü bir araçtır. İş ilanlarındaki trendleri analiz ederek, hangi beceri setlerinin ön plana çıktığını ve hangi alanlarda daha fazla talep olduğunu belirlemek mümkündür. Bu sayede, iş arayanlar kendilerini daha iyi yönlendirebilir ve işverenler doğru adayları bulabilir.
-
-    #### Yenilikçi Bir Platform: FreshData
-
-    FreshData, bilişim sektöründeki iş arayanlar için yenilikçi bir platformdur. Bu platform, iş ilanlarını derinlemesine analiz ederek kullanıcılarına en güncel bilgileri sunar. Aynı zamanda, bilişim sektörünün geleceğine dair öngörülerde bulunur ve kullanıcılarına bu konuda rehberlik eder.
-
-    #### Kullanıcı Dostu Arayüz
-
-    FreshData'nın kullanıcı dostu arayüzü, iş arayanların ve işverenlerin ihtiyaçlarına yönelik tasarlanmıştır. Kullanıcılar, kolayca istedikleri pozisyonları arayabilir, iş ilanlarını filtreleyebilir ve ilgilerini çeken içeriklere erişebilirler. Ayrıca, platformun görsel ve içerikleri kullanıcıların ilgisini çekmek için özenle seçilmiştir.
-
-    #### Geleceğe Yönelik Bakış
-
-    FreshData, bilişim sektörünün geleceğine yönelik bir bakış sunar. Veri analizi ve uzman görüşlerine dayanarak, sektördeki değişimleri ve gelecekteki trendleri tahmin etmeye çalışır. Bu sayede, hem iş arayanlar hem de işverenler geleceğe daha güvenle bakabilirler.
-
-    ### Sonuç
-
-    Bilişim sektörü, sürekli değişen ve gelişen bir alan olmaya devam edecektir. FreshData gibi platformlar, bu değişime ayak uydurmak isteyenler için değerli bir kaynak oluşturur. Veri analizi ve yenilikçi yaklaşımlarıyla, bilişim sektörünün geleceğini şekillendirmeye yardımcı olurlar.
-    ''')
-
-# Footer
-st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True) 
+    ERP (Kurumsal Kaynak Planlaması) uzmanları, şirketlerin operasyonel süreçlerini optimize eder ve verimliliği artırır. Pandemi sürecinde tedarik zincirlerinde yaşanan aksaklıklar, ERP çözümlerine olan ihtiyacı ve dol
