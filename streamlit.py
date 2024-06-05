@@ -23,7 +23,8 @@ st.markdown(
         background-color: #aed6f1; /* Arka plan rengi */
     }
     .stButton>button {
-        color: #f4d03f; /* Buton içindeki yazı rengi */
+        color: #9b59b6; /* Buton içindeki yazı rengi */
+        background-color: #9b59b6; /* Buton rengi */
     }
     </style>
     """,
@@ -69,4 +70,3 @@ if st.button("Hakkımızda"):
 
 # Footer
 st.markdown('<p style="text-align: center; font-size: 12px; color: #888;">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
-
