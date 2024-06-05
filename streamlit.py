@@ -67,9 +67,6 @@ url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%B
 def load_data(url): 
     return pd.read_excel(url)
 
-
-
-
     if st.button("İş Bul", key="iş_bul_button"):
         st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
@@ -88,15 +85,11 @@ def load_data(url):
     if st.button("İşveren Girişi", key="isveren_girisi_button"):
         st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-# Ek butonlar
-st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
-
-
-
-
     if st.button("İşveren Girişi", key="isveren_girisi_button"):
         st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
+# Makaleler bölümü
+st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
 
     if st.button("Makale 1"):
         st.markdown('''
@@ -105,10 +98,6 @@ st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html
         ### Giriş
         ...
         ''')
-
-
-# Makaleler bölümü
-st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
 
 # Makale 2
 if st.button("Makale 2"):
