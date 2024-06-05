@@ -62,7 +62,7 @@ url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%B
 def load_data(url): 
     return pd.read_excel(url)
 # Üçlü kolonlar ve butonlar
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4, col5 = st.columns(5)
 
 with col1:
     if st.button("İş Bul", key="iş_bul_button"):
@@ -75,6 +75,14 @@ with col2:
 with col3:
     if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
         st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
+with col4:
+    # Analiz butonu
+    if st.button("Analiz"):
+        st.markdown('<div class="info-box"><p>Burada veri analizi işlevi gelecek.</p></div>', unsafe_allow_html=True)
+with col5:
+# Grafikler butonu
+    if st.button("Grafikler"):
+        st.markdown('<div class="info-box"><p>Burada grafikler çizme işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Ek bir buton ve bilgi kutusu
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
