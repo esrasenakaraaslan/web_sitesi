@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import requests
+from io import BytesIO
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -63,10 +65,20 @@ url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%B
 
 @st.cache_data
 def load_data(url):
-    return pd.read_excel(url)
+    response = requests.get(url)
+    if response.status_code == 200:
+        return pd.read_excel(BytesIO(response.content))
+    else:
+        st.error(f"Error fetching the file: {response.status_code}")
+        return pd.DataFrame()  # Boş bir DataFrame döndür
 
 # Veriyi yükle
 data = load_data(url)
+
+if data.empty:
+    st.error("Veri yüklenirken bir hata oluştu.")
+else:
+    st.write(data)
 
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
