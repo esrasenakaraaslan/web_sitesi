@@ -8,7 +8,7 @@ st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 st.markdown('<h1 style="color: #9b59b6; text-align: center;">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
 # URL
-url = "kaggle datasets download -d esrasenakaraaslan/is-ilanlari-sonhali" 
+url = "https://www.kaggle.com/datasets/esrasenakaraaslan/is-ilanlari-sonhali" 
 
 # Veri yükleme işlevi
 @st.cache_data 
