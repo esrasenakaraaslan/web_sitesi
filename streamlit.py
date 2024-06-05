@@ -1,5 +1,5 @@
 import streamlit as st
-
+import pandas as pd
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 
@@ -58,7 +58,8 @@ st.markdown(
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%BCm_veriler_d%C3%BCzenlenmi%C5%9F_y%C4%B1ll%C4%B1.xlsx" 
-@st.cache_data def load_data(url): 
+@st.cache_data 
+def load_data(url): 
     return pd.read_excel(url)
 # Üçlü kolonlar ve butonlar
 col1, col2, col3 = st.columns(3)
