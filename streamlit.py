@@ -67,10 +67,9 @@ url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%B
 def load_data(url): 
     return pd.read_excel(url)
 
-# İşlev butonları
-col1, col2 = st.columns(2)
 
-with col1:
+
+
     if st.button("İş Bul", key="iş_bul_button"):
         st.markdown('<div class="info-box"><p>Burada iş bulma işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
@@ -80,23 +79,25 @@ with col1:
     if st.button("Türkiye'nin Geldiği Son Nokta", key="son_nokta_button"):
         st.markdown('<div class="info-box"><p>Burada Türkiye\'nin geldiği son noktayla ilgili bilgiler yer alacak.</p></div>', unsafe_allow_html=True)
 
-with col2:
     if st.button("Analiz"):
         st.markdown('<div class="info-box"><p>Burada veri analizi işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
     if st.button("Grafikler"):
         st.markdown('<div class="info-box"><p>Burada grafikler çizme işlevi gelecek.</p></div>', unsafe_allow_html=True)
+        
+    if st.button("İşveren Girişi", key="isveren_girisi_button"):
+        st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
 # Ek butonlar
 st.markdown('<h2 class="header-title">Diğer İşlevler</h2>', unsafe_allow_html=True)
 
-col3, col4 = st.columns(2)
 
-with col3:
+
+
     if st.button("İşveren Girişi", key="isveren_girisi_button"):
         st.markdown('<div class="info-box"><p>Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
-with col4:
+
     if st.button("Makale 1"):
         st.markdown('''
         ## Bilişim Sektöründeki İstihdam Analizi
@@ -105,8 +106,6 @@ with col4:
         ...
         ''')
 
-# Footer
-st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
 
 # Makaleler bölümü
 st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
@@ -125,3 +124,5 @@ if st.button("Hakkımızda"):
     ## Bilişim Sektöründe Gelecek: Veri Analizi ve İş İlanları
     ...
     ''')
+    # Footer
+st.markdown('<p class="footer">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
