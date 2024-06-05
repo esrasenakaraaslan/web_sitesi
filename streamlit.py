@@ -91,20 +91,12 @@ def load_data(url):
 # Makaleler bölümü
 st.markdown('<h2 class="header-title">Makaleler</h2>', unsafe_allow_html=True)
 
-    if st.button("Makale 1"):
-        st.markdown('''
-        ## Bilişim Sektöründeki İstihdam Analizi
-
-        ### Giriş
-        ...
-        ''')
+# Makale 1
+if st.button("Makale 1"):
+    st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
 
 # Makale 2
 if st.button("Makale 2"):
-    st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 2</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
-
-# Makale 3
-if st.button("Makale 3"):
     st.markdown('<div class="info-box" style="background-color: #9b59b6;"><h3 style="color: #ec407a;">Başlık 3</h3><p>Burada makale içeriği yer alacak.</p></div>', unsafe_allow_html=True)
 
 # Hakkımızda bölümü
