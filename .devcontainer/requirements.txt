@@ -4,3 +4,4 @@ scikit-learn
 matplotlib
 openpyxl
 openpyxl==3.0.9
+seaborn
