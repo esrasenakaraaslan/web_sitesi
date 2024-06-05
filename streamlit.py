@@ -55,6 +55,8 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# Arka plan görselini içeren div
+st.markdown('<div class="background-container"></div>', unsafe_allow_html=True)
 
 # Başlık
 st.markdown('<h1 class="header-title">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
