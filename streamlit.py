@@ -11,7 +11,7 @@ st.markdown('<h1 style="color: #9b59b6; text-align: center;">FreshData İş İla
 url = "https://www.kaggle.com/datasets/esrasenakaraaslan/is-ilanlari-sonhali" 
 
 # Veri yükleme işlevi
-@st.cache_data 
+@st.cache
 def load_data(url): 
     return pd.read_excel(url)
 
@@ -59,6 +59,7 @@ if st.button("Grafikler"):
 
     # Grafikleri çizme işlevini çağır
     draw_bar_chart(data)
+
 if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div style="background-color: #9b59b6; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"><p style="color: #f4d03f;">Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
 
@@ -82,4 +83,3 @@ if st.button("Hakkımızda"):
 
 # Footer
 st.markdown('<p style="text-align: center; font-size: 12px; color: #888;">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
-
