@@ -7,22 +7,17 @@ st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 
 # Başlık
 st.markdown('<h1 style="color: #9b59b6; text-align: center;">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
-
-# API adresi
-api_url = "https://api.kaggle.com/v1/datasets/download/esrasenakaraaslan/is-ilanlari-sonhali"
+# URL
+url = "https://raw.githubusercontent.com/esrasenakaraaslan/datasetim/main/t%C3%BCm_veriler_d%C3%BCzenlenmi%C5%9F_y%C4%B1ll%C4%B1.xlsx" 
 
 # Veri yükleme işlevi
-@st.cache
-def load_data(api_url):
-    response = requests.get(api_url)
-    if response.status_code == 200:
-        with open("data.xlsx", "wb") as f:
-            f.write(response.content)
-        return pd.read_excel("data.xlsx")
-    else:
-        st.error("API'den veri alınamadı.")
-        return None
-
+@st.cache_data 
+def load_data(url): 
+    return pd.read_excel(url)
+ @st.cache_data 
+def load_data(url): 
+     return pd.read_excel(url)
+     
 # Arka plan rengi ve site ismi rengi
 st.markdown(
     """
@@ -55,15 +50,15 @@ if st.button("Analiz"):
 if st.button("Grafikler"):
     st.markdown('<div style="background-color: #9b59b6; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"><p style="color: #f4d03f;">Burada grafikler çizme işlevi gelecek.</p></div>', unsafe_allow_html=True)
     # Grafik çizme işlevi
-    def draw_bar_chart(data):
+    def draw_bar_chart(url):
         # Konum sütununda en çok tekrar eden 5 değeri bul
-        top_locations = data['Konum'].value_counts().head(5)
+        top_locations = url['Konum'].value_counts().head(5)
 
         # Bar chart oluştur
         st.bar_chart(top_locations)
 
     # Veri setini yükleme
-    data = load_data(api_url)
+    data = load_data(url)
 
     # Verinin varlığını kontrol etme
     if data is not None:
