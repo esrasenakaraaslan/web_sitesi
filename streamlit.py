@@ -11,6 +11,7 @@ st.markdown('<h1 style="color: #9b59b6; text-align: center;">FreshData İş İla
 # URL
 url = "https://github.com/esrasenakaraaslan/web_sitesi/blob/5c38af596049fbb1daf0701a57a96da7885f1b5c/.devcontainer/t%C3%BCm_veriler_d%C3%BCzenlenmi%C5%9F_y%C4%B1ll%C4%B1%20(4).xlsx"
 a=st.file_uploader(url)
+print(a)
 # Veri yükleme işlevi
 @st.cache
 def load_data(a): 
