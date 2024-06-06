@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
+from io import BytesIO
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -11,7 +12,10 @@ st.markdown('<h1 style="color: #9b59b6; text-align: center;">FreshData İş İla
 
 # GitHub'daki Excel dosyasının URL'si
 url = "https://github.com/esrasenakaraaslan/web_sitesi/raw/main/.devcontainer/tu%CC%88m_veriler_du%CC%88zenlenmis%CC%A7_y%C4%B1ll%C4%B1%20(2)esra.csv"
-
+response = requests.get(url)
+file = BytesIO(response.content)
+df = pd.read_excel(file)
+st.write(df)
 # Excel dosyasını yükleyip okuma
 @st.cache
 def load_data(url):
