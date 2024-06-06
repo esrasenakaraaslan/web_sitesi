@@ -16,7 +16,7 @@ url = "https://github.com/esrasenakaraaslan/web_sitesi/raw/main/.devcontainer/t%
 response = requests.get(url)
 file = BytesIO(response.content)
 df = pd.read_excel(file)
-st.write(df)
+st.dataframe(df)
 # Excel dosyasını yükleyip okuma
 @st.cache
 def load_data(url):
