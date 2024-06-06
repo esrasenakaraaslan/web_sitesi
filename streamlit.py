@@ -17,12 +17,12 @@ import streamlit as st
 import pandas as pd
 
 # GitHub'daki Excel dosyasının URL'si
-url = "https://github.com/esrasenakaraaslan/web_sitesi/raw/main/.devcontainer/t%C3%BCm_veriler_d%C3%BCzenlenmi%C5%9F_y%C4%B1ll%C4%B1%20(4).xlsx"
+url = "https://github.com/esrasenakaraaslan/web_sitesi/raw/main/.devcontainer/tu%CC%88m_veriler_du%CC%88zenlenmis%CC%A7_y%C4%B1ll%C4%B1%20(2)esra.csv"
 
 # Excel dosyasını yükleyip okuma
 @st.cache
 def load_data(url):
-    return pd.read_excel(url)
+    return pd.read_csv(url)
 
 # Veriyi yükle
 df = load_data(url)
