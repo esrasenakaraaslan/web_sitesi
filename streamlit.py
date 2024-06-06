@@ -1,8 +1,8 @@
-import streamlit as st
+nimport streamlit as st
 import pandas as pd
 import requests
 from io import BytesIO
-import pyxl
+import openpyxl
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
