@@ -8,13 +8,6 @@ st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 # Başlık
 st.markdown('<h1 style="color: #9b59b6; text-align: center;">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-import streamlit as st 
-import pandas as pd
-
-
-
-import streamlit as st
-import pandas as pd
 
 # GitHub'daki Excel dosyasının URL'si
 url = "https://github.com/esrasenakaraaslan/web_sitesi/raw/main/.devcontainer/tu%CC%88m_veriler_du%CC%88zenlenmis%CC%A7_y%C4%B1ll%C4%B1%20(2)esra.csv"
@@ -71,7 +64,7 @@ if st.button("Grafikler"):
         st.bar_chart(top_locations)
 
     # Veri setini yükleme
-    data = load_data(a)
+    data = load_data(url)
 
     # Verinin varlığını kontrol etme
     if data is not None:
