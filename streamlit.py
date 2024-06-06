@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-pip install openpyxl
+
 
 import requests
 from io import BytesIO
