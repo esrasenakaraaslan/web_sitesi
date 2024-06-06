@@ -20,7 +20,7 @@ st.dataframe(df)
 # Excel dosyasını yükleyip okuma
 @st.cache
 def load_data(url):
-    return pd.read_csv(url)
+    return pd.read_excel(url)
 
 # Veriyi yükle
 df = load_data(url)
