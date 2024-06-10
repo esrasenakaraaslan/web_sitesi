@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
-
-
 import requests
-from io import BytesIO 
-import openpyxl
+from io import BytesIO
 
 # Uygulama ayarları
 st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
@@ -12,17 +9,15 @@ st.set_page_config(page_title="FreshData", page_icon=":rocket:", layout="wide")
 # Başlık
 st.markdown('<h1 style="color: #9b59b6; text-align: center;">FreshData İş İlanı Sitesi</h1>', unsafe_allow_html=True)
 
-
 # GitHub'daki Excel dosyasının URL'si
 url = "https://github.com/esrasenakaraaslan/web_sitesi/raw/main/.devcontainer/t%C3%BCm_veriler_d%C3%BCzenlenmi%C5%9F_y%C4%B1ll%C4%B1%20(4).xlsx"
-response = requests.get(url)
-file = BytesIO(response.content)
-df = pd.read_excel(file)
-st.dataframe(df)
-# Excel dosyasını yükleyip okuma
-@st.cache
+
+@st.cache_data
 def load_data(url):
-    return pd.read_excel(url)
+    response = requests.get(url)
+    file = BytesIO(response.content)
+    df = pd.read_excel(file)
+    return df
 
 # Veriyi yükle
 df = load_data(url)
@@ -30,7 +25,8 @@ df = load_data(url)
 # Streamlit ile veriyi görüntüleme
 st.write("Dosya Başarıyla Yüklendi!")
 st.write("Dosya İçeriği:")
-st.write(df)
+st.dataframe(df)
+
 # Arka plan rengi ve site ismi rengi
 st.markdown(
     """
@@ -62,7 +58,6 @@ if st.button("Analiz"):
 
 if st.button("Grafikler"):
     st.markdown('<div style="background-color: #9b59b6; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"><p style="color: #f4d03f;">Burada grafikler çizme işlevi gelecek.</p></div>', unsafe_allow_html=True)
- # Grafik çizme işlevi
     def draw_bar_chart(data):
         # Konum sütununda en çok tekrar eden 5 değeri bul
         top_locations = data['Konum'].value_counts().head(5)
@@ -70,13 +65,10 @@ if st.button("Grafikler"):
         # Bar chart oluştur
         st.bar_chart(top_locations)
 
-    # Veri setini yükleme
-    data = load_data(url)
-
     # Verinin varlığını kontrol etme
-    if data is not None:
+    if df is not None:
         # Grafikleri çizme işlevini çağırma
-        draw_bar_chart(data)   
+        draw_bar_chart(df)   
 
 if st.button("İşveren Girişi", key="isveren_girisi_button"):
     st.markdown('<div style="background-color: #9b59b6; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"><p style="color: #f4d03f;">Burada işveren giriş işlevi gelecek.</p></div>', unsafe_allow_html=True)
@@ -101,4 +93,3 @@ if st.button("Hakkımızda"):
 
 # Footer
 st.markdown('<p style="text-align: center; font-size: 12px; color: #888;">© 2024 FreshData. Tüm hakları saklıdır.</p>', unsafe_allow_html=True)
-
