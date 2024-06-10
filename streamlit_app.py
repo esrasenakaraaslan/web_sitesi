@@ -3,7 +3,7 @@ import pandas as pd
 
 
 import requests
-from io import BytesIO
+from io import BytesIO 
 import openpyxl
 
 # Uygulama ayarları
